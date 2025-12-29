@@ -1,0 +1,260 @@
+/* ================== GLOBAL ================== */
+body {
+    background: #0b0b0b;
+    color: white;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* ================== FOOTER ================== */
+.footer-note {
+    position: fixed;
+    bottom: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.15);
+    color: #cfcfcf;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+}
+
+/* ================== HOME ================== */
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 85vh;
+    padding: 0 6%;
+}
+
+.hero-text {
+    max-width: 45%;
+    transform: translateX(-60px);
+}
+
+.hero-text p.intro {
+    font-size: 2.3rem;
+    margin-bottom: 0;
+}
+
+.hero-text h1 {
+    font-size: 4.6rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #ededed;
+    line-height: 1.1;
+}
+
+.hero-text h1 span {
+    color: #d59bf6;
+}
+
+.hero-text p.job {
+    font-size: 1.6rem;
+    margin-bottom: 18px;
+    color: #d5d5d5;
+}
+
+.socials i {
+    font-size: 2rem;
+    margin-right: 22px;
+}
+
+.btn-cv {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 12px 34px;
+    border-radius: 35px;
+    background: #d59bf6;
+    color: #000;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.photo-arc {
+    width: 380px;
+    height: 520px;
+    background: #d59bf6;
+    border-top-left-radius: 60% 50%;
+    border-top-right-radius: 60% 50%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    overflow: hidden;
+    padding-bottom: 0;
+    transform: translateX(40px);
+}
+
+.photo-arc img {
+    width: 95%;
+    position: relative;
+    bottom: -12px;
+}
+
+.citation {
+    margin-top: 25px;
+    font-style: italic;
+    text-align: center;
+    font-size: 1.25rem;
+    color: #cfcfcf;
+    width: 120%;
+    transform: translateX(-10%);
+    white-space: nowrap;
+}
+
+/* ================== TITRES + BARRES ================== */
+.section-title {
+    text-align: center;
+    font-size: 3rem;
+    margin-top: 40px;
+    letter-spacing: 3px;
+    color: #e8e5d5;
+}
+
+.nice-bar {
+    width: 260px;
+    height: 2px;
+    background: #d59bf6;
+    margin: 8px auto 50px auto;
+    position: relative;
+}
+
+.nice-bar::after {
+    content: "";
+    position: absolute;
+    top: -5px;
+    right: -15px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #d59bf6;
+}
+
+/* ================== A PROPOS ================== */
+.apropos-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 40px;
+    margin-bottom: 120px;
+}
+
+.apropos-photo {
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    background: #d59bf6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.apropos-photo img {
+    width: 95%;
+    border-radius: 50%;
+}
+
+.apropos-text-box {
+    width: 500px;
+    padding: 25px;
+    font-size: 1rem;
+    background: #141414;
+    border: 2px solid #d59bf6;
+    color: #eee;
+    line-height: 1.45;
+    border-radius: 12px;
+}
+
+/* ================== SOFT SKILLS ================== */
+.skills-grid {
+    width: 80%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px 60px;
+    margin-top: 50px;
+}
+
+.skill-card {
+    background: #d59bf6;
+    color: black;
+    font-weight: 600;
+    padding: 18px 22px;
+    border-radius: 30px;
+    text-align: center;
+    font-size: 1.1rem;
+    position: relative;
+}
+
+.skill-card p {
+    margin: 8px 0 0;
+    font-weight: 400;
+    font-size: 0.9rem;
+}
+
+.skill-icon {
+    position: absolute;
+    right: 15px;
+    bottom: 10px;
+    font-size: 1.6rem;
+    color: white;
+}
+
+/* ================== PASSIONS ================== */
+.passions-row {
+    width: 95%;
+    margin: 60px auto 140px auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 30px;
+}
+
+.passion-card {
+    flex: 1;
+    background: #141414;
+    border: 2px solid #d59bf6;
+    border-radius: 18px;
+    padding: 20px;
+    text-align: center;
+    color: #eee;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.passion-card img {
+    width: 100%;
+    height: 330px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    border: 2px solid #d59bf6;
+}
+
+.passion-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 8px;
+    color: #e8e5d5;
+}
+
+.passion-card p {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    color: #ccc;
+}
+
+/* ================== PARCOURS ================== */
+
+/* ================== PROJETS ================== */
+
+/* ================== EXPERIENCE ================== */
+
+/* ================== CONTACT ================== */

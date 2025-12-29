@@ -1,0 +1,171 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<link rel="stylesheet" href="{{ asset('style.css') }}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+<h1 class="section-title">MON PARCOURS</h1>
+<div class="nice-bar"></div>
+
+<style>
+body {
+    font-family: "Segoe UI", sans-serif;
+    background: #0b0b0b;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.timeline {
+    position: relative;
+    width: 90%;
+    height: 450px;
+    margin: 0 auto 100px auto;
+}
+
+/* Ligne horizontale au milieu */
+.timeline-line {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: #d59bf6;
+    border-radius: 2px;
+    z-index: 1;
+}
+
+/* Étapes */
+.timeline-step {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+/* Bulles */
+.bubble {
+    width: 200px;
+    background: #1a1a1a;
+    padding: 20px;
+    border-radius: 15px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 0 15px rgba(0,0,0,0.5);
+    border: 2px solid #d59bf6; /* contour violet */
+}
+
+.bubble.top {
+    transform: translate(-50%, -90%);
+}
+
+.bubble.bottom {
+    transform: translate(-50%, 100%);
+}
+
+/* Logos rectangles sans contour */
+.bubble img {
+    width: 60px;
+    height: 40px;
+    object-fit: contain;
+    position: absolute;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: none;
+    border: none;
+}
+
+/* Sablier penché */
+#step4 img {
+    width: 50px;
+    height: 50px;
+    top: -25px;
+    left: 10px;
+    transform: rotate(-25deg);
+}
+
+.step-text {
+    margin-top: 30px;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+/* Flèches verticales vers bulles */
+.arrow {
+    position: absolute;
+    width: 4px;
+    background: #d59bf6;
+    left: 50%;
+}
+
+.timeline-step .top .arrow {
+    top: 0;
+    height: 120%;
+    transform: translateX(-50%);
+}
+
+.timeline-step .bottom .arrow {
+    top: 100%;
+    height: 80%;
+    transform: translateX(-50%);
+}
+</style>
+
+<div class="timeline">
+    <div class="timeline-line"></div>
+
+    <!-- Étape 1 : Collège -->
+    <div class="timeline-step" style="left:10%">
+        <div class="arrow top"></div>
+        <div class="bubble top">
+            <img src="{{ asset('images/termier.jpg') }}" alt="Collège">
+            <div class="step-text">
+                <strong>1. Collège Pierre Termier</strong><br>
+                (Lyon 3, Montchat)<br>
+                Brevet Mention Bien
+            </div>
+        </div>
+    </div>
+
+    <!-- Étape 2 : Lycée -->
+    <div class="timeline-step" style="left:35%">
+        <div class="arrow bottom"></div>
+        <div class="bubble bottom">
+            <img src="{{ asset('images/fays.jpg') }}" alt="Lycée">
+            <div class="step-text">
+                <strong>2. Lycée Frédéric Faÿs</strong><br>
+                (Villeurbanne)<br>
+                Baccalauréat général Mention Bien
+            </div>
+        </div>
+    </div>
+
+    <!-- Étape 3 : IUT -->
+    <div class="timeline-step" style="left:65%">
+        <div class="arrow top"></div>
+        <div class="bubble top">
+            <img src="{{ asset('images/iut.png') }}" alt="IUT">
+            <div class="step-text">
+                <strong>3. IUT de Roanne</strong><br>
+                BUT Réseaux et Télécommunications
+            </div>
+        </div>
+    </div>
+
+    <!-- Étape 4 : Projet futur -->
+    <div class="timeline-step" style="left:90%">
+        <div class="arrow bottom"></div>
+        <div class="bubble bottom" id="step4">
+            <img src="{{ asset('images/sablier.png') }}" alt="Projet futur">
+            <div class="step-text">
+                <strong>4. Projet d’avenir</strong><br>
+                Master Cybersécurité
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

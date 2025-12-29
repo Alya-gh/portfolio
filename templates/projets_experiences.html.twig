@@ -1,0 +1,336 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<link rel="stylesheet" href="{{ asset('style.css') }}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+<h1 class="section-title">RT1.1 - Administrer les Réseaux et l'Internet</h1>
+<div class="nice-bar"></div>
+
+<style>
+
+/* ================== GLOBAL ================== */
+body{
+    background:#0b0b0b;
+    color:white;
+}
+
+.nice-bar {
+    width: 260px;
+    height: 2px;
+    background: #d59bf6;
+    margin: 8px auto 50px auto;
+    position: relative;
+}
+
+.project-container{
+    display:flex;
+    justify-content:center;
+    gap:70px;
+    margin-top:80px;
+    margin-bottom:140px;
+    align-items:center; /* centre verticalement les colonnes */
+}
+
+.project-photos{
+    display:flex;
+    gap:25px;
+}
+
+.project-photos img{
+    border-radius:12px;
+}
+
+.project-text-box{
+    width:520px;
+    background:#d59bf6;
+    padding:35px 40px;
+    border-radius:30px;
+    font-size:1rem;
+    line-height:1.55;
+    position:relative;
+    color:black;
+}
+
+.quote-icons{
+    font-size:45px;
+    font-weight:bold;
+    position:absolute;
+    top:-5px;
+    left:-10px;
+    color:white;
+}
+
+.quote-icons.end{
+    bottom:-10px;
+    right:-10px;
+    top:auto;
+    left:auto;
+}
+
+.text-bubble-wrapper{
+    display:flex;
+    flex-direction:column;
+    align-items:center; /* centre le bouton par rapport à la bulle */
+}
+
+.text-bubble-wrapper .btn{
+    margin-top:25px;
+    border:2px solid white;
+    color:white;
+    background:transparent;
+    transition:0.3s;
+    cursor:pointer;
+    padding:0.5rem 1.5rem;
+    border-radius:50px;
+}
+
+.text-bubble-wrapper .btn:hover,
+.text-bubble-wrapper .btn:active,
+.text-bubble-wrapper .btn:focus{
+    background:#d59bf6;
+    border-color:#d59bf6;
+    color:black;
+}
+
+</style>
+
+<!-- ================== PROJET 1 ================== -->
+<div class="project-container">
+
+    <div class="project-photos">
+        <img src="{{ asset('images/trame.png') }}" style="width:560px;" alt="">
+    </div>
+
+    <div class="text-bubble-wrapper">
+        <div class="project-text-box">
+            <div class="quote-icons">“</div>
+
+            Dans cette compétence, l’objectif est d’assurer le bon fonctionnement d’un réseau au quotidien,
+            depuis la mise en service jusqu’au dépannage.
+            À travers des TP et des SAE, j’ai appris à configurer et vérifier les paramètres essentiels
+            (adressage IP, services réseau, segmentation), tout en appliquant une démarche de diagnostic structurée.
+            Les analyses réflexives et documents de preuves associés montrent comment j’identifie une panne,
+            comment je justifie mes choix techniques, et comment je sécurise et stabilise l’infrastructure.
+
+            <div class="quote-icons end">”</div>
+        </div>
+
+        <button class="btn" onclick="window.location.href='https://drive.google.com/drive/folders/1tyx55gzwYbh-viRGz37KLjD9V2K5wlVC?usp=sharing'">
+            NIVEAU 1
+        </button>
+    </div>
+
+</div>
+
+<!-- ================== PROJET 2 ================== -->
+<h1 class="section-title">RT2.1 - Connecter les Entreprises et les Usagers</h1>
+<div class="nice-bar"></div>
+
+<div class="project-container">
+
+    <div class="project-photos">
+        <img src="{{ asset('images/projet1_1.jpg') }}" style="width:280px;" alt="">
+        <img src="{{ asset('images/projet1_2.jpg') }}" style="width:280px;" alt="">
+    </div>
+
+    <div class="text-bubble-wrapper">
+        <div class="project-text-box">
+            <div class="quote-icons">“</div>
+
+            Cette compétence porte sur la mise en place de solutions de connectivité fiables
+            pour relier des utilisateurs, des sites et des services.
+            J’y développe ma capacité à concevoir une interconnexion cohérente
+            (accès, distribution, liaisons, services), à assurer la continuité de service,
+            et à prendre en compte les contraintes de performance et de sécurité.
+            Les preuves associées mettent en avant ma méthode de conception,
+            mes tests (validation/recette), et ma capacité à expliquer clairement
+            le fonctionnement d’une solution de bout en bout.
+
+            <div class="quote-icons end">”</div>
+        </div>
+
+        <button class="btn" onclick="window.location.href='https://drive.google.com/drive/folders/1kuu0Vlvc1r8hA0UeORHLEoBsLnXd-B9q?usp=sharing'">
+            NIVEAU 1
+        </button>
+    </div>
+
+</div>
+
+<!-- ================== PROJET 3 ================== -->
+<h1 class="section-title">RT3.1 - Créer des Outils et Applications informatiques pour les R&T</h1>
+<div class="nice-bar"></div>
+
+<div class="project-container">
+
+    <div class="project-photos">
+        <img src="{{ asset('images/ordi.jpg') }}" style="width:560px;" alt="">
+    </div>
+
+    <div class="text-bubble-wrapper">
+        <div class="project-text-box">
+            <div class="quote-icons">“</div>
+
+            Cette compétence consiste à produire des outils utiles aux Réseaux & Télécoms :
+            automatisation, scripts, applications simples, ou solutions de supervision.
+            Les projets réalisés m’ont permis de transformer un besoin technique en solution concrète
+            (définition du besoin, réalisation, tests, amélioration), tout en gardant une logique de qualité
+            (clarté, fiabilité, maintenabilité).
+            Les documents de preuves montrent ma progression, mes choix d’implémentation,
+            et la façon dont j’évalue les résultats pour améliorer l’outil.
+
+            <div class="quote-icons end">”</div>
+        </div>
+
+        <!-- Bouton centré sous la bulle -->
+        <button class="btn" onclick="window.location.href='https://drive.google.com/drive/folders/1kUNjtEgkQDRXUgVfvYAr5i9NgW41emh_?usp=sharing'">
+            NIVEAU 1
+        </button>
+    </div>
+
+</div>
+
+<!-- ================== EXPÉRIENCE ================== -->
+<h1 class="section-title">EXPÉRIENCE</h1>
+<div class="nice-bar"></div>
+
+<style>
+/* Container expérience */
+.experience-container {
+    display: flex;
+    justify-content: center; /* centre l'ensemble */
+    gap: 80px; /* espace entre bulles et CV */
+    align-items: flex-start;
+    margin-bottom: 150px;
+    position: relative;
+}
+
+/* Ligne verticale de séparation entre bulles et CV */
+.experience-separator {
+    width: 2px;
+    background: #ccc; /* gris clair */
+    position: absolute;
+    left: 50%; /* milieu du container */
+    top: 0;
+    bottom: 0;
+    transform: translateX(-50%);
+    z-index: 0;
+}
+
+/* Colonne des bulles */
+.experience-bubbles {
+    display: flex;
+    flex-direction: column;
+    gap: 40px; /* espace entre les bulles */
+    position: relative;
+    z-index: 1; /* au-dessus de la ligne de séparation */
+    transform: translateX(-80px); /* décale uniquement les bulles vers la gauche */
+}
+
+/* Bullets à gauche */
+.bubble-check {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #d59bf6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.2rem;
+}
+
+.bubble-check.white {
+    background: white;
+}
+
+/* Texte des bulles violettes */
+.bubble-text {
+    background: #d59bf6;
+    color: black;
+    padding: 20px 30px; /* plus grand padding */
+    border-radius: 25px;
+    max-width: 350px;
+    font-size: 1rem;
+    min-height: 130px; /* allonge la bulle pour correspondre à l'image */
+    display: flex;
+    align-items: center; /* centre verticalement le texte */
+}
+
+/* Ligne verticale reliant les bulles */
+.bubble-line {
+    position: absolute;
+    width: 6px;
+    background: #d59bf6;
+    top: 30px;
+    bottom: 30px;
+    left: 25px;
+    z-index: -1;
+}
+
+/* Image à droite */
+.experience-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 1; /* au-dessus de la ligne de séparation */
+}
+
+.experience-image img {
+    width: 350px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+</style>
+
+<div class="experience-container">
+
+    <!-- Ligne de séparation centrale -->
+    <div class="experience-separator"></div>
+
+    <div class="experience-bubbles">
+        <!-- Ligne verticale -->
+        <div class="bubble-line"></div>
+
+        <!-- Stage 1 -->
+        <div class="d-flex align-items-center gap-4">
+            <div class="bubble-check">
+                <i class="bi bi-check-lg" style="color:white;"></i>
+            </div>
+            <div class="bubble-text">
+                Assistante Cheffe de Projet Digitale — Stagiaire<br>
+                Epsilon — Vaulx-en-Velin (février 2022)
+            </div>
+        </div>
+
+        <!-- Stage 2 -->
+        <div class="d-flex align-items-center gap-4">
+            <div class="bubble-check">
+                <i class="bi bi-check-lg" style="color:white;"></i>
+            </div>
+            <div class="bubble-text">
+                Événementiel — Mairie de Bobigny (Stage de seconde, juin 2023)
+            </div>
+        </div>
+
+        <!-- Alternance -->
+        <div class="d-flex align-items-center gap-4">
+            <div class="bubble-check white">
+                <!-- vide car pas encore validé -->
+            </div>
+            <div class="bubble-text">
+                Futur alternance<br>
+                Recherche d’une alternance en réseaux ou cybersécurité
+            </div>
+        </div>
+    </div>
+
+    <div class="experience-image">
+        <img src="{{ asset('images/cv.jpg') }}" alt="CV Alya">
+    </div>
+
+</div>
+
+
+{% endblock %}

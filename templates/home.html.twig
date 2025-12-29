@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<link rel="stylesheet" href="{{ asset('style.css') }}">
+
+<div class="hero">
+
+    <div class="hero-text">
+        <p class="intro">Mon nom est</p>
+
+        <h1>Alya <span>ODDOZ</span></h1>
+
+        <p class="job">Étudiante en BUT Réseaux & Télécommunications - Groupe : B1</p>
+
+      <div class="socials mb-3">
+        <a href="https://www.linkedin.com/in/alya-oddoz-227860357" class="text-white" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://github.com/Alya-gh" class="text-white" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-github"></i>
+        </a>
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=alya.oddoz.pro@gmail.com"
+        class="link-light" target="_blank" rel="noopener noreferrer">
+        <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://www.instagram.com/oddoz.alya/" class="text-white" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+
+
+      <a href="{{ asset('documents/cv.pdf') }}" download class="btn-cv">Télécharger mon CV (PDF)</a>
+
+        <p class="citation">« Passionnée par les réseaux, la cybersécurité et les technologies du numérique »</p>
+    </div>
+
+    <div class="photo-arc">
+        <img src="{{ asset('images/alya1.png') }}" alt="Alya">
+    </div>
+
+</div>
+
+{% endblock %}
