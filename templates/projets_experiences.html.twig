@@ -5,384 +5,323 @@
 <link rel="stylesheet" href="{{ asset('style.css') }}">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
-<h1 class="section-title">RT1.1 - Administrer les Réseaux et l'Internet</h1>
-<div class="nice-bar"></div>
-
 <style>
 
 /* ================== GLOBAL ================== */
+
 body{
     background:#0b0b0b;
     color:white;
+    font-family: Arial, sans-serif;
 }
 
-.nice-bar {
-    width: 260px;
-    height: 2px;
-    background: #d59bf6;
-    margin: 8px auto 50px auto;
-    position: relative;
+.section-title{
+    text-align:center;
+    margin-top:60px;
 }
 
-.project-container{
+.nice-bar{
+    width:260px;
+    height:2px;
+    background:#d59bf6;
+    margin:8px auto 50px auto;
+}
+
+/* ================== COMPETENCES ================== */
+
+.skills-wrapper{
     display:flex;
     justify-content:center;
-    gap:70px;
-    margin-top:80px;
-    margin-bottom:140px;
-    align-items:center; /* centre verticalement les colonnes */
+    flex-wrap:wrap;
+    gap:40px;
+    margin-top:60px;
 }
 
-.project-photos{
+/* CARD */
+
+.skill-card{
+    width:300px;
+    background:#111;
+    border-radius:20px;
+    border:1px solid #333;
+    padding:20px;
+}
+
+/* TITRE CLICKABLE */
+
+.skill-title{
+    display:block;
+    text-align:center;
+    cursor:pointer;
+}
+
+.skill-title:hover{
+    color:#d59bf6;
+}
+
+/* CACHE INPUT */
+
+.skill-toggle{
+    display:none;
+}
+
+/* AC LIST */
+
+.ac-list{
+    display:none;
+    margin-top:15px;
+}
+
+/* SHOW AC LIST */
+
+.skill-toggle:checked + .skill-title + .ac-list{
+    display:block;
+}
+
+/* AC ITEM */
+
+.ac-item{
+    background:#1a1a1a;
+    padding:12px;
+    border-radius:12px;
+    margin-bottom:10px;
+}
+
+/* SEMESTRE */
+
+.sem-panel{
+    display:none;
+    margin-top:10px;
+    text-align:center;
+}
+
+.ac-toggle{
+    display:none;
+}
+
+.ac-toggle:checked + label + .sem-panel{
+    display:block;
+}
+
+/* LABEL AC */
+
+.ac-label{
+    cursor:pointer;
+    display:block;
+    color:white;
+}
+
+.ac-label:hover{
+    color:#d59bf6;
+}
+
+/* BOUTONS */
+
+.sem-btn{
+    margin:5px;
+    padding:6px 10px;
+    border-radius:8px;
+    border:none;
+    cursor:pointer;
+    background:#d59bf6;
+    color:black;
+    font-weight:500;
+}
+
+.sem-btn:hover{
+    opacity:0.8;
+}
+
+/* ================== EXPERIENCE ================== */
+
+.experience-container{
     display:flex;
-    gap:25px;
+    justify-content:center;
+    gap:80px;
+    align-items:flex-start;
+    margin-top:60px;
+    flex-wrap:wrap;
 }
 
-.project-photos img{
+.exp-item{
+    display:flex;
+    gap:15px;
+    margin-bottom:25px;
+}
+
+.exp-check{
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    background:#d59bf6;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.exp-box{
+    background:#1a1a1a;
+    padding:15px 20px;
+    border-radius:15px;
+    width:300px;
+}
+
+.cv img{
+    width:320px;
     border-radius:12px;
 }
 
-.project-text-box{
-    width:520px;
-    background:#d59bf6;
-    padding:35px 40px;
-    border-radius:30px;
-    font-size:1rem;
-    line-height:1.55;
-    position:relative;
-    color:black;
-}
-
-.quote-icons{
-    font-size:45px;
-    font-weight:bold;
-    position:absolute;
-    top:-5px;
-    left:-10px;
-    color:white;
-}
-
-.quote-icons.end{
-    bottom:-10px;
-    right:-10px;
-    top:auto;
-    left:auto;
-}
-
-.text-bubble-wrapper{
-    display:flex;
-    flex-direction:column;
-    align-items:center; /* centre le bouton par rapport à la bulle */
-}
-
-.text-bubble-wrapper .btn{
-    margin-top:25px;
-    border:2px solid white;
-    color:white;
-    background:transparent;
-    transition:0.3s;
-    cursor:pointer;
-    padding:0.5rem 1.5rem;
-    border-radius:50px;
-}
-
-.text-bubble-wrapper .btn:hover,
-.text-bubble-wrapper .btn:active,
-.text-bubble-wrapper .btn:focus{
-    background:#d59bf6;
-    border-color:#d59bf6;
-    color:black;
-}
-
 </style>
 
-<!-- ================== COMPETENCE 1 ================== -->
-<div class="project-container">
+<!-- ================== TITRE ================== -->
 
-    <div class="project-photos">
-        <img src="{{ asset('images/trame.png') }}" style="width:560px;" alt="">
-    </div>
-
-    <div class="text-bubble-wrapper">
-        <div class="project-text-box">
-            <div class="quote-icons">“</div>
-
-            Dans cette compétence, l’objectif est d’assurer le bon fonctionnement d’un réseau au quotidien,
-            depuis la mise en service jusqu’au dépannage.
-            À travers des TP et des SAE, j’ai appris à configurer et vérifier les paramètres essentiels
-            (adressage IP, services réseau, segmentation), tout en appliquant une démarche de diagnostic structurée.
-            Les analyses réflexives et documents de preuves associés montrent comment j’identifie une panne,
-            comment je justifie mes choix techniques et comment je sécurise et stabilise l’infrastructure.
-
-            <div class="quote-icons end">”</div>
-        </div>
-
-        <button class="btn" onclick="window.location.href='https://docs.google.com/document/d/14gYqGKQcw2smd2ZaGH4o9Z5piZaUemsqKihpYfpwFTc/edit?usp=sharing'">
-            NIVEAU 1
-        </button>
-    </div>
-
-</div>
-
-<!-- ================== COMPETENCE 2 ================== -->
-<h1 class="section-title">RT2.1 - Connecter les Entreprises et les Usagers</h1>
+<h1 class="section-title">PROJETS - COMPÉTENCES</h1>
 <div class="nice-bar"></div>
 
-<div class="project-container">
+<!-- ================== COMPETENCES ================== -->
 
-    <div class="project-photos">
-        <img src="{{ asset('images/projet1_1.jpg') }}" style="width:280px;" alt="">
-        <img src="{{ asset('images/projet1_2.jpg') }}" style="width:280px;" alt="">
-    </div>
+<div class="skills-wrapper">
 
-    <div class="text-bubble-wrapper">
-        <div class="project-text-box">
-            <div class="quote-icons">“</div>
+<!-- RT1 -->
+<div class="skill-card">
 
-            Cette compétence porte sur la mise en place de solutions de connectivité fiables
-            pour relier des utilisateurs, des sites et des services.
-            J’y développe ma capacité à concevoir une interconnexion cohérente
-            (accès, distribution, liaisons, services), à assurer la continuité de service,
-            et à prendre en compte les contraintes de performance et de sécurité.
-            Les preuves associées mettent en avant ma méthode de conception,
-            mes tests (validation/recette), et ma capacité à expliquer clairement
-            le fonctionnement d’une solution de bout en bout.
+    <input type="checkbox" id="rt1" class="skill-toggle">
 
-            <div class="quote-icons end">”</div>
+    <label for="rt1" class="skill-title">
+        <h3>RT1</h3>
+        <p>Administrer les réseaux</p>
+    </label>
+
+    <div class="ac-list">
+
+        <div class="ac-item">
+
+            <input type="checkbox" id="rt1_ac1" class="ac-toggle">
+
+            <label for="rt1_ac1" class="ac-label">
+                AC11.01 - Électricité réseau
+            </label>
+
+            <div class="sem-panel">
+                <a href="{{ asset('Documents/R1.01b.pdf') }}" target="_blank">
+                    <button class="sem-btn">S1</button>
+                </a>
+                <a href="{{ asset('Documents/R2.05.pdf') }}" target="_blank">
+                    <button class="sem-btn">S2</button>
+                </a>
+            </div>
+
         </div>
 
-        <button class="btn" onclick="window.location.href='https://docs.google.com/document/d/1H1pZkMBS4y7g0BzNluA4nbIZ3VIkPqun0cD3bza0Io4/edit?usp=drive_link'">
-            NIVEAU 1
-        </button>
     </div>
+</div>
+
+<!-- RT2 -->
+<div class="skill-card">
+
+    <input type="checkbox" id="rt2" class="skill-toggle">
+
+    <label for="rt2" class="skill-title">
+        <h3>RT2</h3>
+        <p>Connecter les usagers</p>
+    </label>
+
+    <div class="ac-list">
+
+        <div class="ac-item">
+
+            <input type="checkbox" id="rt2_ac1" class="ac-toggle">
+
+            <label for="rt2_ac1" class="ac-label">
+                AC12.01 - Analyse signaux
+            </label>
+
+            <div class="sem-panel">
+                <a href="{{ asset('Documents/SAE1.03.pdf') }}" target="_blank">
+                    <button class="sem-btn">S1</button>
+                </a>
+                <a href="{{ asset('Documents/SAE2.03.pdf') }}" target="_blank">
+                    <button class="sem-btn">S2</button>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- RT3 -->
+<div class="skill-card">
+
+    <input type="checkbox" id="rt3" class="skill-toggle">
+
+    <label for="rt3" class="skill-title">
+        <h3>RT3</h3>
+        <p>Développement</p>
+    </label>
+
+    <div class="ac-list">
+
+        <div class="ac-item">
+
+            <input type="checkbox" id="rt3_ac1" class="ac-toggle">
+
+            <label for="rt3_ac1" class="ac-label">
+                AC13.01 - Programmation
+            </label>
+
+            <div class="sem-panel">
+                <a href="{{ asset('Documents/R1.07.pdf') }}" target="_blank">
+                    <button class="sem-btn">S1</button>
+                </a>
+                <a href="{{ asset('Documents/R2.07.pdf') }}" target="_blank">
+                    <button class="sem-btn">S2</button>
+                </a>
+            </div>
+
+        </div>
+
+    </div>
+</div>
 
 </div>
 
-<!-- ================== COMPETENCE 3 ================== -->
-<h1 class="section-title">RT3.1 - Créer des Outils et Applications informatiques pour les R&T</h1>
-<div class="nice-bar"></div>
+<!-- ================== EXPERIENCE ================== -->
 
-<div class="project-container">
-
-    <div class="project-photos">
-        <img src="{{ asset('images/ordi.jpg') }}" style="width:560px;" alt="">
-    </div>
-
-    <div class="text-bubble-wrapper">
-        <div class="project-text-box">
-            <div class="quote-icons">“</div>
-
-            Cette compétence consiste à produire des outils utiles aux Réseaux & Télécoms :
-            automatisation, scripts, applications simples, ou solutions de supervision.
-            Les projets réalisés m’ont permis de transformer un besoin technique en solution concrète
-            (définition du besoin, réalisation, tests, amélioration), tout en gardant une logique de qualité
-            (clarté, fiabilité, maintenabilité).
-            Les documents de preuves montrent ma progression, mes choix d’implémentation,
-            et la façon dont j’évalue les résultats pour améliorer l’outil.
-
-            <div class="quote-icons end">”</div>
-        </div>
-
-        <!-- Bouton centré sous la bulle -->
-        <button class="btn" onclick="window.location.href='https://docs.google.com/document/d/1h0ZjtvrqQ6OeSclWwOZE2ro631msMXPGTP4-2_KyyVI/edit?usp=drive_link'">
-            NIVEAU 1
-        </button>
-    </div>
-
-</div>
-
-<!-- ================== EXPÉRIENCE ================== -->
 <h1 class="section-title">EXPÉRIENCE</h1>
 <div class="nice-bar"></div>
 
-<style>
-/* Container expérience */
-.experience-container {
-    display: flex;
-    justify-content: center; /* centre l'ensemble */
-    gap: 80px; /* espace entre bulles et CV */
-    align-items: flex-start;
-    margin-bottom: 150px;
-    position: relative;
-}
-
-/* Ligne verticale de séparation entre bulles et CV */
-.experience-separator {
-    width: 2px;
-    background: #ccc; /* gris clair */
-    position: absolute;
-    left: 50%; /* milieu du container */
-    top: 0;
-    bottom: 0;
-    transform: translateX(-50%);
-    z-index: 0;
-}
-
-/* Colonne des bulles */
-.experience-bubbles {
-    display: flex;
-    flex-direction: column;
-    gap: 40px; /* espace entre les bulles */
-    position: relative;
-    z-index: 1; /* au-dessus de la ligne de séparation */
-    transform: translateX(-80px); /* décale uniquement les bulles vers la gauche */
-}
-
-/* Bullets à gauche */
-.bubble-check {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: #d59bf6;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    font-size: 1.2rem;
-}
-
-.bubble-check.white {
-    background: white;
-}
-
-/* Texte des bulles violettes */
-.bubble-text {
-    background: #d59bf6;
-    color: black;
-    padding: 20px 30px; /* plus grand padding */
-    border-radius: 25px;
-    max-width: 350px;
-    font-size: 1rem;
-    min-height: 130px; /* allonge la bulle pour correspondre à l'image */
-    display: flex;
-    align-items: center; /* centre verticalement le texte */
-}
-
-/* Ligne verticale reliant les bulles */
-.bubble-line {
-    position: absolute;
-    width: 6px;
-    background: #d59bf6;
-    top: 30px;
-    bottom: 30px;
-    left: 25px;
-    z-index: -1;
-}
-
-/* Image à droite */
-.experience-image {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    z-index: 1; /* au-dessus de la ligne de séparation */
-}
-
-.experience-image img {
-    width: 350px;
-    border-radius: 12px;
-    object-fit: cover;
-}
-</style>
-
 <div class="experience-container">
 
-    <!-- Ligne de séparation centrale -->
-    <div class="experience-separator"></div>
+    <div>
 
-    <div class="experience-bubbles">
-        <!-- Ligne verticale -->
-        <div class="bubble-line"></div>
-
-        <!-- Stage 1 -->
-        <div class="d-flex align-items-center gap-4">
-            <div class="bubble-check">
-                <i class="bi bi-check-lg" style="color:white;"></i>
-            </div>
-            <div class="bubble-text">
-                Assistante Cheffe de Projet Digitale — Stagiaire<br>
-                Epsilon — Vaulx-en-Velin (février 2022)
+        <div class="exp-item">
+            <div class="exp-check"><i class="bi bi-check-lg"></i></div>
+            <div class="exp-box">
+                Epsilon — Chef de projet digital (2022)
             </div>
         </div>
 
-        <!-- Stage 2 -->
-        <div class="d-flex align-items-center gap-4">
-            <div class="bubble-check">
-                <i class="bi bi-check-lg" style="color:white;"></i>
-            </div>
-            <div class="bubble-text">
-                Événementiel — Mairie de Bobigny (Stage de seconde, juin 2023)
+        <div class="exp-item">
+            <div class="exp-check"><i class="bi bi-check-lg"></i></div>
+            <div class="exp-box">
+                Mairie de Bobigny — Événementiel (2023)
             </div>
         </div>
 
-        <!-- Alternance -->
-        <div class="d-flex align-items-center gap-4">
-            <div class="bubble-check white">
-                <!-- vide car pas encore validé -->
-            </div>
-            <div class="bubble-text">
-                Futur alternance<br>
-                Recherche d’une alternance en réseaux ou cybersécurité
+        <div class="exp-item">
+            <div class="exp-check"><i class="bi bi-check-lg"></i></div>
+            <div class="exp-box">
+                Orange — Alternance Back Office
             </div>
         </div>
+
     </div>
 
-    <div class="experience-image">
-        <img src="{{ asset('images/cv.jpg') }}" alt="CV Alya">
+    <div class="cv">
+        <img src="{{ asset('images/cv.jpg') }}" alt="CV">
     </div>
 
 </div>
-
-
-<!--
-<div style="text-align:center; margin-top:40px;">
-    <button
-        onclick="document.getElementById('moreExp').style.display='block'"
-        style="
-            background:#d59bf6;
-            color:black; /* texte noir */
-            border:none;
-            padding:12px 30px;
-            border-radius:30px;
-            font-size:1rem;
-            cursor:pointer;
-            box-shadow:0 6px 15px rgba(0,0,0,0.15);
-            transition: transform 0.2s ease;
-        "
-        onmouseover="this.style.transform='scale(1.05)'" 
-        onmouseout="this.style.transform='scale(1)'"
-    >
-        En savoir plus
-    </button>
-</div>
-
-<div id="moreExp" style="
-    display:none;
-    margin:40px auto;
-    padding:20px;
-    max-width:600px;
-    border:1px solid #ccc;
-    border-radius:15px;
-    background:white;
-    color:black; /* texte noir */
-    box-shadow:0 8px 20px rgba(0,0,0,0.15);
-">
-    <button onclick="this.parentElement.style.display='none'" style="
-        float:right;
-        background:none;
-        border:none;
-        font-size:1.2rem;
-        cursor:pointer;
-        color:black; /* texte noir */
-    ">
-        ✕
-    </button>
-
-    <h3>Autres expériences</h3>
-    <p>A remplir</p>
-
-    <h3>Métier de rêve</h3>
-    <p>Ingénieure en cybersécurité spécialisée dans la sécurisation des réseaux.</p>
-</div>-->
- 
 
 {% endblock %}

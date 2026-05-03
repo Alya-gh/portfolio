@@ -254,7 +254,38 @@ body {
 /* ================== PARCOURS ================== */
 
 /* ================== PROJETS ================== */
+.ac-box{
+    background:#111;
+    padding:15px;
+    border-radius:15px;
+    margin-bottom:15px;
+    border:1px solid #333;
+}
 
+.ac-box h4{
+    margin-bottom:10px;
+}
+
+.sem-btns{
+    display:flex;
+    gap:10px;
+}
+
+.sem-btns button{
+    padding:8px 12px;
+    border-radius:20px;
+    border:1px solid white;
+    background:transparent;
+    color:white;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.sem-btns button:hover{
+    background:#d59bf6;
+    color:black;
+    border-color:#d59bf6;
+}
 /* ================== EXPERIENCE ================== */
 
 /* ================== CONTACT ================== */
