@@ -7,7 +7,7 @@
 
 <style>
 
-/* ================== GLOBAL ================== */
+/* ================= GLOBAL ================= */
 
 body{
     background:#0b0b0b;
@@ -18,6 +18,8 @@ body{
 .section-title{
     text-align:center;
     margin-top:60px;
+    font-weight:600;
+    letter-spacing:1px;
 }
 
 .nice-bar{
@@ -27,7 +29,7 @@ body{
     margin:8px auto 50px auto;
 }
 
-/* ================== COMPETENCES ================== */
+/* ================= WRAPPER ================= */
 
 .skills-wrapper{
     display:flex;
@@ -37,17 +39,22 @@ body{
     margin-top:60px;
 }
 
-/* CARD */
+/* ================= CARD ================= */
 
 .skill-card{
-    width:300px;
+    width:320px;
     background:#111;
     border-radius:20px;
     border:1px solid #333;
     padding:20px;
+    transition:0.3s;
 }
 
-/* TITRE CLICKABLE */
+.skill-card:hover{
+    transform:translateY(-5px);
+}
+
+/* HEADER */
 
 .skill-title{
     display:block;
@@ -59,32 +66,54 @@ body{
     color:#d59bf6;
 }
 
-/* CACHE INPUT */
-
 .skill-toggle{
     display:none;
 }
 
-/* AC LIST */
+/* ================= CONTENT ================= */
 
 .ac-list{
     display:none;
-    margin-top:15px;
+    margin-top:20px;
 }
-
-/* SHOW AC LIST */
 
 .skill-toggle:checked + .skill-title + .ac-list{
     display:block;
 }
 
-/* AC ITEM */
+/* ================= EXPLANATION ================= */
+
+.skill-explain{
+    background:#181818;
+    padding:15px;
+    border-radius:12px;
+    margin-bottom:15px;
+    font-size:0.9rem;
+    color:#ccc;
+    line-height:1.5;
+    border-left:3px solid #d59bf6;
+}
+
+/* ================= AC ================= */
 
 .ac-item{
     background:#1a1a1a;
     padding:12px;
     border-radius:12px;
     margin-bottom:10px;
+}
+
+.ac-toggle{
+    display:none;
+}
+
+.ac-label{
+    cursor:pointer;
+    display:block;
+}
+
+.ac-label:hover{
+    color:#d59bf6;
 }
 
 /* SEMESTRE */
@@ -95,31 +124,15 @@ body{
     text-align:center;
 }
 
-.ac-toggle{
-    display:none;
-}
-
 .ac-toggle:checked + label + .sem-panel{
     display:block;
 }
 
-/* LABEL AC */
-
-.ac-label{
-    cursor:pointer;
-    display:block;
-    color:white;
-}
-
-.ac-label:hover{
-    color:#d59bf6;
-}
-
-/* BOUTONS */
+/* BUTTONS */
 
 .sem-btn{
     margin:5px;
-    padding:6px 10px;
+    padding:6px 12px;
     border-radius:8px;
     border:none;
     cursor:pointer;
@@ -132,7 +145,7 @@ body{
     opacity:0.8;
 }
 
-/* ================== EXPERIENCE ================== */
+/* ================= EXPERIENCE ================= */
 
 .experience-container{
     display:flex;
@@ -173,154 +186,155 @@ body{
 
 </style>
 
-<!-- ================== TITRE ================== -->
-
 <h1 class="section-title">PROJETS - COMPÉTENCES</h1>
 <div class="nice-bar"></div>
-
-<!-- ================== COMPETENCES ================== -->
 
 <div class="skills-wrapper">
 
 <!-- RT1 -->
 <div class="skill-card">
+<input type="checkbox" id="rt1" class="skill-toggle">
 
-    <input type="checkbox" id="rt1" class="skill-toggle">
+<label for="rt1" class="skill-title">
+<h3>RT1</h3>
+<p>Administrer les réseaux</p>
+</label>
 
-    <label for="rt1" class="skill-title">
-        <h3>RT1</h3>
-        <p>Administrer les réseaux</p>
-    </label>
+<div class="ac-list">
 
-    <div class="ac-list">
+<div class="skill-explain">
+Configurer, maintenir et diagnostiquer un réseau local.  
+Les travaux réalisés montrent ma capacité à intervenir sur une infrastructure réseau et à résoudre des problèmes techniques.
+<br><br>
+<strong>Conclusion :</strong> je sais administrer un réseau local de manière autonome.
+</div>
 
-        <div class="ac-item">
+<div class="ac-item">
+<input type="checkbox" id="rt1_ac1" class="ac-toggle">
+<label for="rt1_ac1" class="ac-label">AC11.01 - Électricité réseau</label>
+<div class="sem-panel">
+<a href="{{ asset('Documents/R1.01b.pdf') }}" target="_blank"><button class="sem-btn">S1</button></a>
+<a href="{{ asset('Documents/R2.05.pdf') }}" target="_blank"><button class="sem-btn">S2</button></a>
+</div>
+</div>
 
-            <input type="checkbox" id="rt1_ac1" class="ac-toggle">
+<div class="ac-item">
+<input type="checkbox" id="rt1_ac2" class="ac-toggle">
+<label for="rt1_ac2" class="ac-label">AC11.03 - Réseau local</label>
+<div class="sem-panel">
+<a href="{{ asset('Documents/R1.03.pdf') }}" target="_blank"><button class="sem-btn">S1</button></a>
+<a href="{{ asset('Documents/R2.02.pdf') }}" target="_blank"><button class="sem-btn">S2</button></a>
+</div>
+</div>
 
-            <label for="rt1_ac1" class="ac-label">
-                AC11.01 - Électricité réseau
-            </label>
-
-            <div class="sem-panel">
-                <a href="{{ asset('Documents/R1.01b.pdf') }}" target="_blank">
-                    <button class="sem-btn">S1</button>
-                </a>
-                <a href="{{ asset('Documents/R2.05.pdf') }}" target="_blank">
-                    <button class="sem-btn">S2</button>
-                </a>
-            </div>
-
-        </div>
-
-    </div>
+</div>
 </div>
 
 <!-- RT2 -->
 <div class="skill-card">
+<input type="checkbox" id="rt2" class="skill-toggle">
 
-    <input type="checkbox" id="rt2" class="skill-toggle">
+<label for="rt2" class="skill-title">
+<h3>RT2</h3>
+<p>Connecter les usagers</p>
+</label>
 
-    <label for="rt2" class="skill-title">
-        <h3>RT2</h3>
-        <p>Connecter les usagers</p>
-    </label>
+<div class="ac-list">
 
-    <div class="ac-list">
+<div class="skill-explain">
+Analyser des signaux et comprendre les systèmes de transmission.  
+Les SAE réalisées montrent ma capacité à interpréter des données et comprendre les communications.
+<br><br>
+<strong>Conclusion :</strong> je maîtrise les bases des systèmes de communication.
+</div>
 
-        <div class="ac-item">
+<div class="ac-item">
+<input type="checkbox" id="rt2_ac1" class="ac-toggle">
+<label for="rt2_ac1" class="ac-label">AC12.01 - Analyse de signaux</label>
+<div class="sem-panel">
+<a href="{{ asset('Documents/SAE1.03.pdf') }}" target="_blank"><button class="sem-btn">S1</button></a>
+<a href="{{ asset('Documents/SAE2.03.pdf') }}" target="_blank"><button class="sem-btn">S2</button></a>
+</div>
+</div>
 
-            <input type="checkbox" id="rt2_ac1" class="ac-toggle">
+<div class="ac-item">
+<input type="checkbox" id="rt2_ac2" class="ac-toggle">
+<label for="rt2_ac2" class="ac-label">AC12.03 - Transmission</label>
+<div class="sem-panel">
+<a href="{{ asset('Documents/R1.05.pdf') }}" target="_blank"><button class="sem-btn">S1</button></a>
+<a href="{{ asset('Documents/R2.01.pdf') }}" target="_blank"><button class="sem-btn">S2</button></a>
+</div>
+</div>
 
-            <label for="rt2_ac1" class="ac-label">
-                AC12.01 - Analyse signaux
-            </label>
-
-            <div class="sem-panel">
-                <a href="{{ asset('Documents/SAE1.03.pdf') }}" target="_blank">
-                    <button class="sem-btn">S1</button>
-                </a>
-                <a href="{{ asset('Documents/SAE2.03.pdf') }}" target="_blank">
-                    <button class="sem-btn">S2</button>
-                </a>
-            </div>
-
-        </div>
-
-    </div>
+</div>
 </div>
 
 <!-- RT3 -->
 <div class="skill-card">
+<input type="checkbox" id="rt3" class="skill-toggle">
 
-    <input type="checkbox" id="rt3" class="skill-toggle">
+<label for="rt3" class="skill-title">
+<h3>RT3</h3>
+<p>Développement</p>
+</label>
 
-    <label for="rt3" class="skill-title">
-        <h3>RT3</h3>
-        <p>Développement</p>
-    </label>
+<div class="ac-list">
 
-    <div class="ac-list">
+<div class="skill-explain">
+Développer des programmes et structurer des algorithmes.  
+Les projets réalisés montrent ma capacité à coder, corriger et améliorer des solutions.
+<br><br>
+<strong>Conclusion :</strong> je suis capable de développer des solutions fonctionnelles.
+</div>
 
-        <div class="ac-item">
+<div class="ac-item">
+<input type="checkbox" id="rt3_ac1" class="ac-toggle">
+<label for="rt3_ac1" class="ac-label">AC13.01 - Outils</label>
+<div class="sem-panel">
+<a href="{{ asset('Documents/R1.07.pdf') }}" target="_blank"><button class="sem-btn">S1</button></a>
+<a href="{{ asset('Documents/R2.02.pdf') }}" target="_blank"><button class="sem-btn">S2</button></a>
+</div>
+</div>
 
-            <input type="checkbox" id="rt3_ac1" class="ac-toggle">
-
-            <label for="rt3_ac1" class="ac-label">
-                AC13.01 - Programmation
-            </label>
-
-            <div class="sem-panel">
-                <a href="{{ asset('Documents/R1.07.pdf') }}" target="_blank">
-                    <button class="sem-btn">S1</button>
-                </a>
-                <a href="{{ asset('Documents/R2.07.pdf') }}" target="_blank">
-                    <button class="sem-btn">S2</button>
-                </a>
-            </div>
-
-        </div>
-
-    </div>
+<div class="ac-item">
+<input type="checkbox" id="rt3_ac2" class="ac-toggle">
+<label for="rt3_ac2" class="ac-label">AC13.03 - Algorithmes</label>
+<div class="sem-panel">
+<a href="{{ asset('Documents/SAE1.05.pdf') }}" target="_blank"><button class="sem-btn">S1</button></a>
+<a href="{{ asset('Documents/R2.07.pdf') }}" target="_blank"><button class="sem-btn">S2</button></a>
+</div>
 </div>
 
 </div>
+</div>
 
-<!-- ================== EXPERIENCE ================== -->
+</div>
 
 <h1 class="section-title">EXPÉRIENCE</h1>
 <div class="nice-bar"></div>
 
 <div class="experience-container">
 
-    <div>
+<div>
+<div class="exp-item">
+<div class="exp-check"><i class="bi bi-check-lg"></i></div>
+<div class="exp-box">Epsilon — Chef de projet digital (2022)</div>
+</div>
 
-        <div class="exp-item">
-            <div class="exp-check"><i class="bi bi-check-lg"></i></div>
-            <div class="exp-box">
-                Epsilon — Chef de projet digital (2022)
-            </div>
-        </div>
+<div class="exp-item">
+<div class="exp-check"><i class="bi bi-check-lg"></i></div>
+<div class="exp-box">Mairie de Bobigny — Événementiel (2023)</div>
+</div>
 
-        <div class="exp-item">
-            <div class="exp-check"><i class="bi bi-check-lg"></i></div>
-            <div class="exp-box">
-                Mairie de Bobigny — Événementiel (2023)
-            </div>
-        </div>
+<div class="exp-item">
+<div class="exp-check"><i class="bi bi-check-lg"></i></div>
+<div class="exp-box">Orange — Alternance Back Office Accès</div>
+</div>
+</div>
 
-        <div class="exp-item">
-            <div class="exp-check"><i class="bi bi-check-lg"></i></div>
-            <div class="exp-box">
-                Orange — Alternance Back Office
-            </div>
-        </div>
-
-    </div>
-
-    <div class="cv">
-        <img src="{{ asset('images/cv.jpg') }}" alt="CV">
-    </div>
+<div class="cv">
+<img src="{{ asset('images/cv.jpg') }}" alt="CV">
+</div>
 
 </div>
 
