@@ -7,8 +7,6 @@
 
 <style>
 
-/* ================= GLOBAL ================= */
-
 body{
     background:#0b0b0b;
     color:white;
@@ -19,7 +17,6 @@ body{
     text-align:center;
     margin-top:60px;
     font-weight:600;
-    letter-spacing:1px;
 }
 
 .nice-bar{
@@ -29,8 +26,6 @@ body{
     margin:8px auto 50px auto;
 }
 
-/* ================= WRAPPER ================= */
-
 .skills-wrapper{
     display:flex;
     justify-content:center;
@@ -39,38 +34,44 @@ body{
     margin-top:60px;
 }
 
-/* ================= CARD ================= */
-
 .skill-card{
     width:320px;
     background:#111;
     border-radius:20px;
     border:1px solid #333;
     padding:20px;
-    transition:0.3s;
 }
 
-.skill-card:hover{
-    transform:translateY(-5px);
+/* lisibilité */
+.skill-card,
+.skill-card *{
+    color:white;
 }
 
-/* HEADER */
-
+/* TITRE COMPÉTENCE */
 .skill-title{
     display:block;
     text-align:center;
     cursor:pointer;
+    transition:0.2s;
 }
 
 .skill-title:hover{
     color:#d59bf6;
 }
 
-.skill-toggle{
-    display:none;
+/* AC hover violet */
+.ac-label{
+    cursor:pointer;
+    transition:0.2s;
 }
 
-/* ================= CONTENT ================= */
+.ac-label:hover{
+    color:#d59bf6;
+}
+
+/* toggle */
+.skill-toggle{ display:none; }
 
 .ac-list{
     display:none;
@@ -81,21 +82,44 @@ body{
     display:block;
 }
 
-/* ================= EXPLANATION ================= */
-
+/* description compétence */
 .skill-explain{
     background:#181818;
     padding:15px;
     border-radius:12px;
     margin-bottom:15px;
     font-size:0.9rem;
-    color:#ccc;
-    line-height:1.5;
     border-left:3px solid #d59bf6;
+    line-height:1.5;
 }
 
-/* ================= AC ================= */
+/* GIBBS */
+.gibbs{
+    background:#181818;
+    padding:18px;
+    border-radius:12px;
+    margin-top:12px;
+    font-size:0.9rem;
+    border-left:3px solid #d59bf6;
+    line-height:1.6;
+}
 
+/* séparation des étapes */
+.gibbs div{
+    margin-bottom:16px;
+}
+
+/* TITRES GIBBS */
+.gibbs strong{
+    color:#d59bf6;
+    text-transform:uppercase;
+    display:block;
+    margin-bottom:4px;
+    font-size:0.85rem;
+    letter-spacing:0.5px;
+}
+
+/* AC BLOCK */
 .ac-item{
     background:#1a1a1a;
     padding:12px;
@@ -103,21 +127,9 @@ body{
     margin-bottom:10px;
 }
 
-.ac-toggle{
-    display:none;
-}
+.ac-toggle{display:none;}
 
-.ac-label{
-    cursor:pointer;
-    display:block;
-}
-
-.ac-label:hover{
-    color:#d59bf6;
-}
-
-/* SEMESTRE */
-
+/* SEM BUTTONS */
 .sem-panel{
     display:none;
     margin-top:10px;
@@ -128,8 +140,6 @@ body{
     display:block;
 }
 
-/* BUTTONS */
-
 .sem-btn{
     margin:5px;
     padding:6px 12px;
@@ -138,15 +148,9 @@ body{
     cursor:pointer;
     background:#d59bf6;
     color:black;
-    font-weight:500;
 }
 
-.sem-btn:hover{
-    opacity:0.8;
-}
-
-/* ================= EXPERIENCE ================= */
-
+/* EXPERIENCE */
 .experience-container{
     display:flex;
     justify-content:center;
@@ -191,117 +195,207 @@ body{
 
 <div class="skills-wrapper">
 
-<!-- RT1 -->
+<!-- ================= RT1 ================= -->
 <div class="skill-card">
 <input type="checkbox" id="rt1" class="skill-toggle">
-
 <label for="rt1" class="skill-title">
 <h3>RT1</h3>
-<p>Administrer les réseaux</p>
+<p>Administrer les réseaux et l’Internet</p>
 </label>
 
 <div class="ac-list">
 
 <div class="skill-explain">
-Configurer, maintenir et diagnostiquer un réseau local.  
-Les travaux réalisés montrent ma capacité à intervenir sur une infrastructure réseau et à résoudre des problèmes techniques.
-<br><br>
-<strong>Conclusion :</strong> je sais administrer un réseau local de manière autonome.
+Configuration réseau local, administration de services Linux, diagnostic et résolution d’incidents techniques.
+</div>
+
+<div class="gibbs">
+
+<div>
+<strong>EXPÉRIENCE</strong>
+Mise en place complète d’un réseau local incluant la configuration d’adresses IP statiques, la mise en service de DNS internes et l’intégration de services Samba sous environnement Linux.
+</div>
+
+<div>
+<strong>SENTIMENTS</strong>
+Phase initiale marquée par des difficultés de compréhension des mécanismes réseau, suivie d’une montée progressive en autonomie et en confiance lors des manipulations pratiques.
+</div>
+
+<div>
+<strong>ÉVALUATION</strong>
+Le réseau a été fonctionnel à l’issue du TP, cependant plusieurs erreurs de configuration ont été identifiées (paramétrage DNS et droits d’accès Samba), nécessitant des corrections successives.
+</div>
+
+<div>
+<strong>ANALYSE</strong>
+Les erreurs proviennent principalement d’un manque de rigueur dans la vérification des paramètres réseau et d’une maîtrise encore incomplète des services Linux utilisés.
+</div>
+
+<div>
+<strong>CONCLUSION</strong>
+La compétence d’administration réseau est globalement acquise mais nécessite encore un renforcement sur les configurations avancées et la méthodologie de diagnostic.
+</div>
+
+<div>
+<strong>PLAN D’ACTION</strong>
+Renforcer la pratique via des exercices Linux complémentaires, approfondir les protocoles réseau et développer une méthodologie de diagnostic plus structurée.
+</div>
+
 </div>
 
 <div class="ac-item">
 <input type="checkbox" id="rt1_ac1" class="ac-toggle">
-<label for="rt1_ac1" class="ac-label">AC11.01 - Électricité réseau</label>
+<label for="rt1_ac1" class="ac-label">AC11.01</label>
 <div class="sem-panel">
-<a href="{{ asset('Documents/R1.01b.pdf') }}" target="_blank"><button class="sem-btn">S1</button></a>
-<a href="{{ asset('Documents/R2.05.pdf') }}" target="_blank"><button class="sem-btn">S2</button></a>
+<a href="{{ asset('Documents/R1.01b.pdf') }}"><button class="sem-btn">S1</button></a>
+<a href="{{ asset('Documents/R2.05.pdf') }}"><button class="sem-btn">S2</button></a>
 </div>
 </div>
 
 <div class="ac-item">
 <input type="checkbox" id="rt1_ac2" class="ac-toggle">
-<label for="rt1_ac2" class="ac-label">AC11.03 - Réseau local</label>
+<label for="rt1_ac2" class="ac-label">AC11.03</label>
 <div class="sem-panel">
-<a href="{{ asset('Documents/R1.03.pdf') }}" target="_blank"><button class="sem-btn">S1</button></a>
-<a href="{{ asset('Documents/R2.02.pdf') }}" target="_blank"><button class="sem-btn">S2</button></a>
+<a href="{{ asset('Documents/R1.03.pdf') }}"><button class="sem-btn">S1</button></a>
+<a href="{{ asset('Documents/R2.02.pdf') }}"><button class="sem-btn">S2</button></a>
 </div>
 </div>
 
 </div>
 </div>
 
-<!-- RT2 -->
+<!-- ================= RT2 ================= -->
 <div class="skill-card">
 <input type="checkbox" id="rt2" class="skill-toggle">
-
 <label for="rt2" class="skill-title">
 <h3>RT2</h3>
-<p>Connecter les usagers</p>
+<p>Connecter les entreprises et les usagers</p>
 </label>
 
 <div class="ac-list">
 
 <div class="skill-explain">
-Analyser des signaux et comprendre les systèmes de transmission.  
-Les SAE réalisées montrent ma capacité à interpréter des données et comprendre les communications.
-<br><br>
-<strong>Conclusion :</strong> je maîtrise les bases des systèmes de communication.
+Analyse des signaux, compréhension des mécanismes de transmission et étude des supports de communication.
+</div>
+
+<div class="gibbs">
+
+<div>
+<strong>EXPÉRIENCE</strong>
+Analyse et observation de signaux réseau (Wi-Fi et cuivre) afin de comprendre les phénomènes de transmission et d’atténuation.
+</div>
+
+<div>
+<strong>SENTIMENTS</strong>
+Approche initialement complexe en raison de la nature abstraite des signaux, puis amélioration progressive grâce aux travaux pratiques.
+</div>
+
+<div>
+<strong>ÉVALUATION</strong>
+Résultats globalement satisfaisants, bien que certaines notions restent fragiles, notamment sur l’interprétation des mesures.
+</div>
+
+<div>
+<strong>ANALYSE</strong>
+Les difficultés sont liées à un manque d’entraînement sur les outils de mesure et une compréhension encore partielle des modèles physiques.
+</div>
+
+<div>
+<strong>CONCLUSION</strong>
+La compréhension globale des systèmes de transmission est acquise mais doit être consolidée par davantage de pratique.
+</div>
+
+<div>
+<strong>PLAN D’ACTION</strong>
+Revoir les bases théoriques, multiplier les exercices de manipulation de signaux et renforcer la compréhension des phénomènes physiques.
+</div>
+
 </div>
 
 <div class="ac-item">
 <input type="checkbox" id="rt2_ac1" class="ac-toggle">
-<label for="rt2_ac1" class="ac-label">AC12.01 - Analyse de signaux</label>
+<label for="rt2_ac1" class="ac-label">AC12.01</label>
 <div class="sem-panel">
-<a href="{{ asset('Documents/SAE1.03.pdf') }}" target="_blank"><button class="sem-btn">S1</button></a>
-<a href="{{ asset('Documents/SAE2.03.pdf') }}" target="_blank"><button class="sem-btn">S2</button></a>
+<a href="{{ asset('Documents/SAE1.03.pdf') }}"><button class="sem-btn">S1</button></a>
+<a href="{{ asset('Documents/SAE2.03.pdf') }}"><button class="sem-btn">S2</button></a>
 </div>
 </div>
 
 <div class="ac-item">
 <input type="checkbox" id="rt2_ac2" class="ac-toggle">
-<label for="rt2_ac2" class="ac-label">AC12.03 - Transmission</label>
+<label for="rt2_ac2" class="ac-label">AC12.03</label>
 <div class="sem-panel">
-<a href="{{ asset('Documents/R1.05.pdf') }}" target="_blank"><button class="sem-btn">S1</button></a>
-<a href="{{ asset('Documents/R2.01.pdf') }}" target="_blank"><button class="sem-btn">S2</button></a>
+<a href="{{ asset('Documents/R1.05.pdf') }}"><button class="sem-btn">S1</button></a>
+<a href="{{ asset('Documents/R2.01.pdf') }}"><button class="sem-btn">S2</button></a>
 </div>
 </div>
 
 </div>
 </div>
 
-<!-- RT3 -->
+<!-- ================= RT3 ================= -->
 <div class="skill-card">
 <input type="checkbox" id="rt3" class="skill-toggle">
-
 <label for="rt3" class="skill-title">
 <h3>RT3</h3>
-<p>Développement</p>
+<p>Créer des outils et des applications informatiques pour les R&T</p>
 </label>
 
 <div class="ac-list">
 
 <div class="skill-explain">
-Développer des programmes et structurer des algorithmes.  
-Les projets réalisés montrent ma capacité à coder, corriger et améliorer des solutions.
-<br><br>
-<strong>Conclusion :</strong> je suis capable de développer des solutions fonctionnelles.
+Conception, développement et structuration d’applications logicielles.
+</div>
+
+<div class="gibbs">
+
+<div>
+<strong>EXPÉRIENCE</strong>
+Réalisation de projets de développement en Python et web, incluant la création d’algorithmes et la structuration d’applications simples.
+</div>
+
+<div>
+<strong>SENTIMENTS</strong>
+Intérêt marqué pour la programmation malgré des difficultés initiales dans la logique algorithmique et l’organisation du code.
+</div>
+
+<div>
+<strong>ÉVALUATION</strong>
+Les programmes développés sont fonctionnels mais peuvent manquer d’optimisation et de structuration avancée.
+</div>
+
+<div>
+<strong>ANALYSE</strong>
+Les difficultés proviennent d’un manque de méthode de conception et d’une expérience encore limitée en développement structuré.
+</div>
+
+<div>
+<strong>CONCLUSION</strong>
+La compétence en développement est en progression constante et tend vers une autonomie progressive.
+</div>
+
+<div>
+<strong>PLAN D’ACTION</strong>
+Pratiquer régulièrement, améliorer la structuration du code et approfondir les bonnes pratiques de développement.
+</div>
+
 </div>
 
 <div class="ac-item">
 <input type="checkbox" id="rt3_ac1" class="ac-toggle">
-<label for="rt3_ac1" class="ac-label">AC13.01 - Outils</label>
+<label for="rt3_ac1" class="ac-label">AC13.01</label>
 <div class="sem-panel">
-<a href="{{ asset('Documents/R1.07.pdf') }}" target="_blank"><button class="sem-btn">S1</button></a>
-<a href="{{ asset('Documents/R2.02.pdf') }}" target="_blank"><button class="sem-btn">S2</button></a>
+<a href="{{ asset('Documents/R1.07.pdf') }}"><button class="sem-btn">S1</button></a>
+<a href="{{ asset('Documents/R2.02.pdf') }}"><button class="sem-btn">S2</button></a>
 </div>
 </div>
 
 <div class="ac-item">
 <input type="checkbox" id="rt3_ac2" class="ac-toggle">
-<label for="rt3_ac2" class="ac-label">AC13.03 - Algorithmes</label>
+<label for="rt3_ac2" class="ac-label">AC13.03</label>
 <div class="sem-panel">
-<a href="{{ asset('Documents/SAE1.05.pdf') }}" target="_blank"><button class="sem-btn">S1</button></a>
-<a href="{{ asset('Documents/R2.07.pdf') }}" target="_blank"><button class="sem-btn">S2</button></a>
+<a href="{{ asset('Documents/SAE1.05.pdf') }}"><button class="sem-btn">S1</button></a>
+<a href="{{ asset('Documents/R2.07.pdf') }}"><button class="sem-btn">S2</button></a>
 </div>
 </div>
 
@@ -310,32 +404,20 @@ Les projets réalisés montrent ma capacité à coder, corriger et améliorer de
 
 </div>
 
+<!-- ================= EXPERIENCE ================= -->
 <h1 class="section-title">EXPÉRIENCE</h1>
 <div class="nice-bar"></div>
 
 <div class="experience-container">
-
 <div>
-<div class="exp-item">
-<div class="exp-check"><i class="bi bi-check-lg"></i></div>
-<div class="exp-box">Epsilon — Chef de projet digital (2022)</div>
-</div>
-
-<div class="exp-item">
-<div class="exp-check"><i class="bi bi-check-lg"></i></div>
-<div class="exp-box">Mairie de Bobigny — Événementiel (2023)</div>
-</div>
-
-<div class="exp-item">
-<div class="exp-check"><i class="bi bi-check-lg"></i></div>
-<div class="exp-box">Orange — Alternance Back Office Accès</div>
-</div>
+<div class="exp-item"><div class="exp-check"><i class="bi bi-check-lg"></i></div><div class="exp-box">Epsilon — Chef de projet digital (2022)</div></div>
+<div class="exp-item"><div class="exp-check"><i class="bi bi-check-lg"></i></div><div class="exp-box">Mairie de Bobigny — Événementiel (2023)</div></div>
+<div class="exp-item"><div class="exp-check"><i class="bi bi-check-lg"></i></div><div class="exp-box">Orange — Alternance Back Office Accès</div></div>
 </div>
 
 <div class="cv">
 <img src="{{ asset('images/cv.jpg') }}" alt="CV">
 </div>
-
 </div>
 
 {% endblock %}
