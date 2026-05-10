@@ -2,422 +2,880 @@
 
 {% block body %}
 
-<link rel="stylesheet" href="{{ asset('style.css') }}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
 <style>
+:root{
+    --bg:#0b0b0b;
+    --card:#111;
+    --card2:#151515;
+    --border:#2a2a2a;
+    --violet:#d59bf6;
+    --text:#ffffff;
+    --muted:#a9a9a9;
+}
 
+/* =====================
+   GLOBAL
+===================== */
 body{
-    background:#0b0b0b;
-    color:white;
-    font-family: Arial, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'DM Sans', Arial, sans-serif;
+    line-height:1.6;
 }
 
-.section-title{
+/* =====================
+   TITRES SECTION
+===================== */
+.section-heading{
     text-align:center;
-    margin-top:60px;
-    font-weight:600;
+    margin:80px 0 35px 0;
+    font-size:20px;
+    font-weight:800;
+    letter-spacing:2px;
+    color:var(--text);
+    position:relative;
 }
 
-.nice-bar{
-    width:260px;
-    height:2px;
-    background:#d59bf6;
-    margin:8px auto 50px auto;
+.section-heading::after{
+    content:"";
+    display:block;
+    width:70px;
+    height:3px;
+    background:var(--violet);
+    margin:10px auto 0;
+    border-radius:10px;
 }
 
-.skills-wrapper{
+/* =====================
+   SKILLS GRID
+===================== */
+.skills-grid{
     display:flex;
     justify-content:center;
     flex-wrap:wrap;
     gap:40px;
-    margin-top:60px;
 }
 
+/* CARD */
 .skill-card{
-    width:320px;
-    background:#111;
-    border-radius:20px;
-    border:1px solid #333;
-    padding:20px;
+    width:360px;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:18px;
+    overflow:hidden;
+    transition:0.3s ease;
 }
 
-/* lisibilité */
-.skill-card,
-.skill-card *{
-    color:white;
-}
-
-/* TITRE COMPÉTENCE */
-.skill-title{
-    display:block;
-    text-align:center;
-    cursor:pointer;
-    transition:0.2s;
-}
-
-.skill-title:hover{
-    color:#d59bf6;
-}
-
-/* AC hover violet */
-.ac-label{
-    cursor:pointer;
-    transition:0.2s;
-}
-
-.ac-label:hover{
-    color:#d59bf6;
+.skill-card:hover{
+    transform:translateY(-6px);
+    border-color:var(--violet);
 }
 
 /* toggle */
-.skill-toggle{ display:none; }
+.skill-toggle{display:none;}
 
-.ac-list{
-    display:none;
-    margin-top:20px;
+/* HEADER */
+.skill-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:22px;
+    cursor:pointer;
 }
 
-.skill-toggle:checked + .skill-title + .ac-list{
+.skill-header:hover{
+    color:var(--violet);
+}
+
+.skill-tag{
+    font-size:11px;
+    padding:4px 10px;
+    border-radius:20px;
+    border:1px solid var(--violet);
+    color:var(--violet);
+}
+
+/* BODY */
+.skill-body{
+    display:none;
+    padding:0 22px 22px;
+}
+
+.skill-toggle:checked ~ .skill-body{
     display:block;
 }
 
-/* description compétence */
-.skill-explain{
-    background:#181818;
+/* =====================
+   PROOF BLOCK
+===================== */
+.proof-block{
+    background:var(--card2);
+    border-left:3px solid var(--violet);
     padding:15px;
     border-radius:12px;
     margin-bottom:15px;
-    font-size:0.9rem;
-    border-left:3px solid #d59bf6;
-    line-height:1.5;
 }
 
-/* GIBBS */
-.gibbs{
-    background:#181818;
-    padding:18px;
-    border-radius:12px;
-    margin-top:12px;
-    font-size:0.9rem;
-    border-left:3px solid #d59bf6;
-    line-height:1.6;
-}
-
-/* séparation des étapes */
-.gibbs div{
-    margin-bottom:16px;
-}
-
-/* TITRES GIBBS */
-.gibbs strong{
-    color:#d59bf6;
-    text-transform:uppercase;
-    display:block;
-    margin-bottom:4px;
-    font-size:0.85rem;
-    letter-spacing:0.5px;
-}
-
-/* AC BLOCK */
-.ac-item{
-    background:#1a1a1a;
-    padding:12px;
-    border-radius:12px;
+.proof-row{
     margin-bottom:10px;
+}
+
+.proof-label{
+    color:var(--violet);
+    font-size:11px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+/* =====================
+   GIBBS
+===================== */
+.gibbs-grid{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+.gibbs-step{
+    background:var(--card2);
+    border-left:2px solid var(--violet);
+    padding:14px;
+    border-radius:12px;
+}
+
+.gibbs-label{
+    color:var(--violet);
+    font-weight:700;
+    font-size:12px;
+    margin-bottom:6px;
+}
+
+/* =====================
+   AC
+===================== */
+.ac-item{
+    background:var(--card2);
+    border:1px solid var(--border);
+    border-radius:12px;
+    margin-top:10px;
+    overflow:hidden;
 }
 
 .ac-toggle{display:none;}
 
-/* SEM BUTTONS */
-.sem-panel{
-    display:none;
-    margin-top:10px;
-    text-align:center;
+.ac-label-row{
+    display:flex;
+    justify-content:space-between;
+    padding:12px;
+    cursor:pointer;
 }
 
-.ac-toggle:checked + label + .sem-panel{
+.ac-label-row:hover{
+    color:var(--violet);
+}
+
+.sem-panel{
+    display:none;
+    padding:12px;
+    text-align:center;
+    background:#0f0f0f;
+}
+
+.ac-toggle:checked ~ .ac-label-row + .sem-panel{
     display:block;
 }
 
 .sem-btn{
-    margin:5px;
-    padding:6px 12px;
-    border-radius:8px;
-    border:none;
-    cursor:pointer;
-    background:#d59bf6;
+    background:var(--violet);
     color:black;
+    border:none;
+    padding:6px 12px;
+    margin:5px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:600;
 }
 
-/* EXPERIENCE */
-.experience-container{
+/* =====================
+   AUTO EVALUATION (CLEAN CARDS)
+===================== */
+.auto-eval{
+    margin:70px auto;
+    max-width:1100px;
+    padding:10px;
+}
+
+.eval-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+    gap:20px;
+}
+
+.eval-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:22px;
+    text-align:center;
+    transition:0.3s;
+}
+
+.eval-card:hover{
+    transform:translateY(-6px);
+    border-color:var(--violet);
+}
+
+.comp-name{
+    font-size:26px;
+    font-weight:900;
+    color:var(--violet);
+}
+
+.comp-title{
+    font-size:12px;
+    color:var(--muted);
+    margin:10px 0 15px;
+}
+
+.stars{
     display:flex;
     justify-content:center;
-    gap:80px;
-    align-items:flex-start;
-    margin-top:60px;
+    gap:5px;
+    margin-bottom:10px;
+}
+
+.star{
+    width:14px;
+    height:14px;
+    background:#333;
+    border-radius:3px;
+}
+
+.star.on{
+    background:var(--violet);
+}
+
+.eval-score{
+    font-size:24px;
+    font-weight:800;
+}
+
+/* =====================
+   EXPERIENCE (FIX PREMIUM)
+===================== */
+.exp-title{
+    text-align:center;
+    font-size:26px;
+    font-weight:900;
+    color:var(--violet);
+    margin:80px 0 40px;
+}
+
+.exp-section{
+    display:flex;
+    justify-content:center;
+    gap:60px;
     flex-wrap:wrap;
+    align-items:flex-start;
+}
+
+/* LIST */
+.exp-list{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
 }
 
 .exp-item{
     display:flex;
-    gap:15px;
-    margin-bottom:25px;
+    gap:12px;
+    align-items:flex-start;
 }
 
-.exp-check{
-    width:35px;
-    height:35px;
+.exp-dot{
+    width:36px;
+    height:36px;
+    background:var(--violet);
     border-radius:50%;
-    background:#d59bf6;
     display:flex;
-    justify-content:center;
     align-items:center;
+    justify-content:center;
+    flex-shrink:0;
 }
 
+/* BOX */
 .exp-box{
-    background:#1a1a1a;
-    padding:15px 20px;
-    border-radius:15px;
-    width:300px;
+    background:var(--card);
+    border:1px solid var(--border);
+    padding:15px;
+    border-radius:12px;
+    width:280px;
 }
 
-.cv img{
+/* CV */
+.cv-preview img{
     width:320px;
     border-radius:12px;
+    border:1px solid var(--border);
 }
 
+/* =====================
+   RESPONSIVE
+===================== */
+@media (max-width:768px){
+    .skills-grid{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .exp-section{
+        flex-direction:column;
+        align-items:center;
+    }
+}
 </style>
 
-<h1 class="section-title">PROJETS - COMPÉTENCES</h1>
-<div class="nice-bar"></div>
+<div class="glow-1"></div>
+<div class="glow-2"></div>
 
-<div class="skills-wrapper">
+<div class="wrapper">
 
-<!-- ================= RT1 ================= -->
+    <!-- ═══════════ HEADER ═══════════ -->
+    <header class="hero">
+        <h1>Projets & Compétences</h1>
+    </header>
+
+    <!-- ═══════════ COMPÉTENCES ═══════════ -->
+    <p class="section-heading">Compétences</p>
+
+    <div class="skills-grid">
+
+        <!-- ══════ RT1 ══════ -->
+        <div class="skill-card">
+            <input type="checkbox" id="rt1" class="skill-toggle">
+            <label for="rt1" class="skill-header">
+                <div>
+                    <span class="skill-tag">RT1</span>
+                    <h3 style="margin-top:10px">Administrer les réseaux et l'Internet</h3>
+                    <p>Réseaux locaux, services Linux, diagnostic</p>
+                </div>
+                <i class="bi bi-chevron-down chevron"></i>
+            </label>
+
+            <div class="skill-body">
+
+                <!-- Document de preuve -->
+                <div class="proof-block">
+                    <div class="proof-title"><i class="bi bi-file-earmark-text"></i> Document de preuve</div>
+
+                    <div class="proof-row">
+                        <span class="proof-label">Contexte</span>
+                        <span class="proof-val">Ressources R1.01b et R1.03 — initiation à l'adressage IPv4, configuration d'équipements réseau (switch, routeur) et services Samba/DNS sous Linux, en TD et TP.</span>
+                    </div>
+                    <div class="proof-row">
+                        <span class="proof-label">Savoirs</span>
+                        <span class="proof-val">Adressage IPv4, classes d'adresses, masques, protocoles ARP / ICMP / DHCP / DNS, modèle OSI, rôle des équipements actifs, VLAN, scripts bash.</span>
+                    </div>
+                    <div class="proof-row">
+                        <span class="proof-label">Savoir-faire</span>
+                        <span class="proof-val">Configuration d'adresses IP statiques et dynamiques, utilisation de ping / ipconfig / arp -a / Wireshark / Packet Tracer, mise en place de VLAN, diagnostic de dysfonctionnements réseau, sauvegarde TFTP.</span>
+                    </div>
+                    <div class="proof-row">
+                        <span class="proof-label">Savoir-être</span>
+                        <span class="proof-val">Rigueur dans les configurations, patience face aux erreurs, méthode de travail structurée, démarche professionnelle de dépannage.</span>
+                    </div>
+                    <div class="proof-row">
+                        <span class="proof-label">Tâche &amp; résultats</span>
+                        <span class="proof-val">Mise en place d'un réseau local fonctionnel avec services DNS et Samba. Réseau opérationnel à l'issue du TP ; plusieurs erreurs de configuration corrigées de manière autonome.</span>
+                    </div>
+                </div>
+
+                <!-- GIBBS -->
+                <div class="gibbs-grid">
+                    <div class="gibbs-step full">
+                        <div class="gibbs-label"><span class="step-num">1</span> Expérience</div>
+                        <p>Au cours des ressources R1.01b et R1.03, j'ai configuré des adresses IP statiques, mis en service des DNS internes et intégré des services Samba sous Linux, tout en manipulant des équipements réels (switch, routeur) via Packet Tracer puis en salle TP. J'ai également analysé des trames réseau avec Wireshark et sauvegardé mes configurations sur un serveur TFTP.</p>
+                    </div>
+                    <div class="gibbs-step">
+                        <div class="gibbs-label"><span class="step-num">2</span> Sentiments</div>
+                        <p>La phase initiale a été marquée par une certaine appréhension face à la complexité des adresses IP et des VLAN. Progressivement, la pratique m'a apporté de l'assurance. J'ai été rassurée de constater que les commandes Cisco Packet Tracer s'appliquaient directement sur le switch réel.</p>
+                    </div>
+                    <div class="gibbs-step">
+                        <div class="gibbs-label"><span class="step-num">3</span> Évaluation</div>
+                        <p>Le réseau final était fonctionnel. Cependant, plusieurs erreurs de configuration (masque, DNS, droits Samba) ont nécessité des corrections successives. La vérification systématique a été le point à améliorer le plus clairement identifié.</p>
+                    </div>
+                    <div class="gibbs-step">
+                        <div class="gibbs-label"><span class="step-num">4</span> Analyse</div>
+                        <p>Les erreurs provenaient d'un manque de rigueur dans la vérification des paramètres et d'une maîtrise encore partielle des services Linux. J'aurais dû tester chaque paramètre individuellement (ping étape par étape) avant de passer à la suite.</p>
+                    </div>
+                    <div class="gibbs-step">
+                        <div class="gibbs-label"><span class="step-num">5</span> Conclusion</div>
+                        <p>La compétence RT1 est globalement acquise : je suis capable de configurer un réseau local, d'identifier des dysfonctionnements et d'y remédier. Les configurations avancées (services Linux, droits d'accès) nécessitent encore un renforcement.</p>
+                    </div>
+                    <div class="gibbs-step">
+                        <div class="gibbs-label"><span class="step-num">6</span> Plan d'action</div>
+                        <p>Multiplier les exercices Linux, approfondir les protocoles réseau, structurer une méthodologie de diagnostic par étapes et m'entraîner davantage aux conversions binaires et à la configuration d'équipements actifs.</p>
+                    </div>
+                </div>
+
+                <!-- ACs -->
+                <div class="ac-section-title">Apprentissages critiques</div>
+                <div class="ac-list">
+
+                    <div class="ac-item">
+                        <input type="checkbox" id="rt1_ac1" class="ac-toggle">
+                        <label for="rt1_ac1" class="ac-label-row">
+                            <div>
+                                <div class="ac-label-name">AC11.01</div>
+                                <div class="ac-label-desc">Comprendre les principes fondamentaux des réseaux</div>
+                            </div>
+                            <i class="bi bi-chevron-down ac-chevron"></i>
+                        </label>
+                        <div class="sem-panel">
+                            <a href="{{ asset('Documents/R1.01b.pdf') }}"><button class="sem-btn">S1 — R1.01b</button></a>
+                            <a href="{{ asset('Documents/R2.05.pdf') }}"><button class="sem-btn">S2 — R2.05</button></a>
+                        </div>
+                    </div>
+
+                    <div class="ac-item">
+                        <input type="checkbox" id="rt1_ac2" class="ac-toggle">
+                        <label for="rt1_ac2" class="ac-label-row">
+                            <div>
+                                <div class="ac-label-name">AC11.03</div>
+                                <div class="ac-label-desc">Configurer les fonctions de base d'un réseau local</div>
+                            </div>
+                            <i class="bi bi-chevron-down ac-chevron"></i>
+                        </label>
+                        <div class="sem-panel">
+                            <a href="{{ asset('Documents/R1.03.pdf') }}"><button class="sem-btn">S1 — R1.03</button></a>
+                            <a href="{{ asset('Documents/R2.02.pdf') }}"><button class="sem-btn">S2 — R2.02</button></a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- ══════ RT2 ══════ -->
+        <div class="skill-card">
+            <input type="checkbox" id="rt2" class="skill-toggle">
+            <label for="rt2" class="skill-header">
+                <div>
+                    <span class="skill-tag">RT2</span>
+                    <h3 style="margin-top:10px">Connecter les entreprises et les usagers</h3>
+                    <p>Signaux, transmission, supports de communication</p>
+                </div>
+                <i class="bi bi-chevron-down chevron"></i>
+            </label>
+
+            <div class="skill-body">
+
+                <div class="proof-block">
+                    <div class="proof-title"><i class="bi bi-file-earmark-text"></i> Document de preuve</div>
+                    <div class="proof-row">
+                        <span class="proof-label">Contexte</span>
+                        <span class="proof-val">Ressources R1.05, SAE1.03 et R2.01 — étude des supports de transmission (cuivre, fibre optique), audit Wi-Fi et recettage câblage de la salle G007, en TD, TP et situation professionnelle simulée.</span>
+                    </div>
+                    <div class="proof-row">
+                        <span class="proof-label">Savoirs</span>
+                        <span class="proof-val">Propagation des signaux électromagnétiques, caractéristiques des câbles cuivre et fibre optique, atténuation, bande passante, mesure de puissance en dBm et SNR, normes de câblage, protocoles TCP/IP, rôle des supports physiques dans la qualité de transmission.</span>
+                    </div>
+                    <div class="proof-row">
+                        <span class="proof-label">Savoir-faire</span>
+                        <span class="proof-val">Réalisation de câblage cuivre et de soudures fibre optique monomode, mesure de pertes d'insertion (1310 nm / 1550 nm), utilisation du Fluke CableIQ, audit Wi-Fi par cartographie signal/SNR, rédaction d'un devis technique HT/TTC avec main-d'œuvre, analyse de conformité d'installation.</span>
+                    </div>
+                    <div class="proof-row">
+                        <span class="proof-label">Savoir-être</span>
+                        <span class="proof-val">Rigueur lors des mesures et soudures, travail en équipe, organisation et répartition des tâches, communication claire pour le rapport final, minutie dans la rédaction du devis.</span>
+                    </div>
+                    <div class="proof-row">
+                        <span class="proof-label">Tâche &amp; résultats</span>
+                        <span class="proof-val">Audit Wi-Fi complet avec identification de zones à améliorer, détection d'une prise défectueuse (C3) par tests CableIQ, production d'un devis technique argumenté. Niveau d'acquisition estimé à 3/4.</span>
+                    </div>
+                </div>
+
+                <div class="gibbs-grid">
+                    <div class="gibbs-step full">
+                        <div class="gibbs-label"><span class="step-num">1</span> Expérience</div>
+                        <p>Au cours de R1.05 et de la SAE1.03, j'ai réalisé du câblage cuivre, effectué des soudures de fibre optique monomode et mesuré les pertes d'insertion à 1310 nm et 1550 nm. En parallèle, lors de la SAE1.03 en groupe, j'ai conduit un audit Wi-Fi de la salle G007 (mesures dBm et SNR par zones), vérifié la conformité du câblage avec un Fluke CableIQ et rédigé un devis technique avec calcul des coûts HT/TTC et de la main-d'œuvre. R2.01 a posé les bases théoriques (TCP/IP, adressage) qui sous-tendent la compréhension de ces supports.</p>
+                    </div>
+                    <div class="gibbs-step">
+                        <div class="gibbs-label"><span class="step-num">2</span> Sentiments</div>
+                        <p>Les soudures de fibre optique ont été intimidantes au départ : la précision requise était bien supérieure à ce que j'anticipais. L'utilisation du Fluke CableIQ m'a donné un sentiment de contexte professionnel réel. La découverte de la prise C3 défectueuse a été une vraie satisfaction — la preuve que les tests servent concrètement.</p>
+                    </div>
+                    <div class="gibbs-step">
+                        <div class="gibbs-label"><span class="step-num">3</span> Évaluation</div>
+                        <p>L'audit Wi-Fi et le recettage cuivre ont abouti à des résultats exploitables. La prise C3 a été correctement identifiée. En revanche, le devis a posé des difficultés dans la sélection du matériel pertinent et l'estimation réaliste du coût de la main-d'œuvre.</p>
+                    </div>
+                    <div class="gibbs-step">
+                        <div class="gibbs-label"><span class="step-num">4</span> Analyse</div>
+                        <p>Les difficultés sur le devis viennent d'un manque d'expérience du monde professionnel et des tarifs réels. Sur la fibre, les premières soudures imprécises provenaient d'une sous-estimation des gestes de nettoyage préalable. J'aurais dû anticiper les résultats attendus avant chaque mesure pour mieux analyser les écarts.</p>
+                    </div>
+                    <div class="gibbs-step">
+                        <div class="gibbs-label"><span class="step-num">5</span> Conclusion</div>
+                        <p>Je suis capable de déployer et tester des supports de transmission, de conduire un audit réseau et de produire un document technique argumenté. La RT2 m'a appris qu'un réseau performant dépend autant de son support physique que de sa configuration logique.</p>
+                    </div>
+                    <div class="gibbs-step">
+                        <div class="gibbs-label"><span class="step-num">6</span> Plan d'action</div>
+                        <p>Multiplier les mesures Wi-Fi à différents moments de la journée, préparer les TP en anticipant les résultats, approfondir les calculs de pertes fibre et m'entraîner sur des cas de devis pour mieux estimer les coûts de main-d'œuvre.</p>
+                    </div>
+                </div>
+
+                <div class="ac-section-title">Apprentissages critiques</div>
+                <div class="ac-list">
+                    <div class="ac-item">
+                        <input type="checkbox" id="rt2_ac1" class="ac-toggle">
+                        <label for="rt2_ac1" class="ac-label-row">
+                            <div>
+                                <div class="ac-label-name">AC12.01</div>
+                                <div class="ac-label-desc">Mesurer et analyser les signaux</div>
+                            </div>
+                            <i class="bi bi-chevron-down ac-chevron"></i>
+                        </label>
+                        <div class="sem-panel">
+                            <a href="{{ asset('Documents/SAE1.03.pdf') }}"><button class="sem-btn">S1 — SAE1.03</button></a>
+                            <a href="{{ asset('Documents/R2.01.pdf') }}"><button class="sem-btn">S2 — R2.01</button></a>
+                        </div>
+                    </div>
+                    <div class="ac-item">
+                        <input type="checkbox" id="rt2_ac2" class="ac-toggle">
+                        <label for="rt2_ac2" class="ac-label-row">
+                            <div>
+                                <div class="ac-label-name">AC12.03</div>
+                                <div class="ac-label-desc">Déployer des supports de transmission</div>
+                            </div>
+                            <i class="bi bi-chevron-down ac-chevron"></i>
+                        </label>
+                        <div class="sem-panel">
+                            <a href="{{ asset('Documents/R1.05.pdf') }}"><button class="sem-btn">S1 — R1.05</button></a>
+                            <a href="{{ asset('Documents/SAE1.03.pdf') }}"><button class="sem-btn">S1 — SAE1.03</button></a>
+                        </div>
+                    </div>
+                    <div class="ac-item">
+                        <input type="checkbox" id="rt2_ac3" class="ac-toggle">
+                        <label for="rt2_ac3" class="ac-label-row">
+                            <div>
+                                <div class="ac-label-name">AC12.05</div>
+                                <div class="ac-label-desc">Communiquer avec un tiers et adapter son discours</div>
+                            </div>
+                            <i class="bi bi-chevron-down ac-chevron"></i>
+                        </label>
+                        <div class="sem-panel">
+                            <a href="{{ asset('Documents/SAE1.03.pdf') }}"><button class="sem-btn">S1 — SAE1.03</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<!-- ══════ RT3 ══════ -->
 <div class="skill-card">
-<input type="checkbox" id="rt1" class="skill-toggle">
-<label for="rt1" class="skill-title">
-<h3>RT1</h3>
-<p>Administrer les réseaux et l’Internet</p>
-</label>
 
-<div class="ac-list">
+    <input type="checkbox" id="rt3" class="skill-toggle">
 
-<div class="skill-explain">
-Configuration réseau local, administration de services Linux, diagnostic et résolution d’incidents techniques.
-</div>
+    <label for="rt3" class="skill-header">
+        <div>
+            <span class="skill-tag">RT3</span>
+            <h3 style="margin-top:10px">
+                Créer des outils et applications pour les R&T
+            </h3>
+            <p>Développement, algorithmique, structuration des données</p>
+        </div>
+        <i class="bi bi-chevron-down chevron"></i>
+    </label>
 
-<div class="gibbs">
+    <div class="skill-body">
 
-<div>
-<strong>EXPÉRIENCE</strong>
-Mise en place complète d’un réseau local incluant la configuration d’adresses IP statiques, la mise en service de DNS internes et l’intégration de services Samba sous environnement Linux.
-</div>
+        <!-- ═════ DOCUMENT DE PREUVE ═════ -->
+        <div class="proof-block">
+            <div class="proof-title">
+                <i class="bi bi-file-earmark-text"></i> Document de preuve
+            </div>
 
-<div>
-<strong>SENTIMENTS</strong>
-Phase initiale marquée par des difficultés de compréhension des mécanismes réseau, suivie d’une montée progressive en autonomie et en confiance lors des manipulations pratiques.
-</div>
+            <div class="proof-row">
+                <span class="proof-label">Contexte</span>
+                <span class="proof-val">
+                    R1.07, SAE1.05, R2.02 et R2.07 — programmation Python/C, analyse réseau (tcpdump),
+                    virtualisation (VMware, Docker) et bases de données SQL sous MySQL.
+                </span>
+            </div>
 
-<div>
-<strong>ÉVALUATION</strong>
-Le réseau a été fonctionnel à l’issue du TP, cependant plusieurs erreurs de configuration ont été identifiées (paramétrage DNS et droits d’accès Samba), nécessitant des corrections successives.
-</div>
+            <div class="proof-row">
+                <span class="proof-label">Savoirs</span>
+                <span class="proof-val">
+                    Variables, fonctions, structures de contrôle, fichiers, paquets TCP, bibliothèques Python
+                    (Pandas, Matplotlib), machines virtuelles, conteneurs Docker, modélisation relationnelle SQL.
+                </span>
+            </div>
 
-<div>
-<strong>ANALYSE</strong>
-Les erreurs proviennent principalement d’un manque de rigueur dans la vérification des paramètres réseau et d’une maîtrise encore incomplète des services Linux utilisés.
-</div>
+            <div class="proof-row">
+                <span class="proof-label">Savoir-faire</span>
+                <span class="proof-val">
+                    Développement Python/C, analyse automatique de trafic réseau, génération de rapports,
+                    création de VM et conteneurs, conception de bases de données et requêtes SQL.
+                </span>
+            </div>
 
-<div>
-<strong>CONCLUSION</strong>
-La compétence d’administration réseau est globalement acquise mais nécessite encore un renforcement sur les configurations avancées et la méthodologie de diagnostic.
-</div>
+            <div class="proof-row">
+                <span class="proof-label">Savoir-être</span>
+                <span class="proof-val">
+                    Rigueur, autonomie, logique de programmation, méthode de test, organisation du code.
+                </span>
+            </div>
 
-<div>
-<strong>PLAN D’ACTION</strong>
-Renforcer la pratique via des exercices Linux complémentaires, approfondir les protocoles réseau et développer une méthodologie de diagnostic plus structurée.
-</div>
+            <div class="proof-row">
+                <span class="proof-label">Résultats</span>
+                <span class="proof-val">
+                    Programmes fonctionnels, outil d’analyse réseau automatisé, VMs et Docker opérationnels,
+                    base de données exploitée avec requêtes SQL avancées.
+                </span>
+            </div>
+        </div>
 
-</div>
+        <!-- ═════ GIBBS ═════ -->
+        <div class="gibbs-grid">
 
-<div class="ac-item">
-<input type="checkbox" id="rt1_ac1" class="ac-toggle">
-<label for="rt1_ac1" class="ac-label">AC11.01</label>
-<div class="sem-panel">
-<a href="{{ asset('Documents/R1.01b.pdf') }}"><button class="sem-btn">S1</button></a>
-<a href="{{ asset('Documents/R2.05.pdf') }}"><button class="sem-btn">S2</button></a>
-</div>
-</div>
+            <div class="gibbs-step full">
+                <div class="gibbs-label"><span class="step-num">1</span> Expérience</div>
+                <p>
+                    J’ai développé plusieurs programmes en Python et C (SAE1.07), notamment des outils de calcul
+                    et de simulation. J’ai aussi conçu un système d’analyse automatique de fichiers tcpdump
+                    (SAE1.05), ainsi que manipulé des machines virtuelles et conteneurs Docker (R2.02).
+                    Enfin, j’ai travaillé sur la conception et l’exploitation de bases de données SQL (R2.07).
+                </p>
+            </div>
 
-<div class="ac-item">
-<input type="checkbox" id="rt1_ac2" class="ac-toggle">
-<label for="rt1_ac2" class="ac-label">AC11.03</label>
-<div class="sem-panel">
-<a href="{{ asset('Documents/R1.03.pdf') }}"><button class="sem-btn">S1</button></a>
-<a href="{{ asset('Documents/R2.02.pdf') }}"><button class="sem-btn">S2</button></a>
-</div>
-</div>
+            <div class="gibbs-step">
+                <div class="gibbs-label"><span class="step-num">2</span> Sentiments</div>
+                <p>
+                    Les projets de programmation étaient motivants, surtout quand les résultats devenaient
+                    concrets. L’analyse réseau a été la plus satisfaisante car elle reproduit un vrai cas
+                    professionnel.
+                </p>
+            </div>
 
-</div>
-</div>
+            <div class="gibbs-step">
+                <div class="gibbs-label"><span class="step-num">3</span> Évaluation</div>
+                <p>
+                    Les programmes simples sont bien maîtrisés. Les projets complexes ont nécessité plusieurs
+                    corrections, notamment sur le parsing réseau et la structuration SQL.
+                </p>
+            </div>
 
-<!-- ================= RT2 ================= -->
-<div class="skill-card">
-<input type="checkbox" id="rt2" class="skill-toggle">
-<label for="rt2" class="skill-title">
-<h3>RT2</h3>
-<p>Connecter les entreprises et les usagers</p>
-</label>
+            <div class="gibbs-step">
+                <div class="gibbs-label"><span class="step-num">4</span> Analyse</div>
+                <p>
+                    Les difficultés venaient surtout d’un manque de structuration initiale et d’une lecture
+                    trop rapide des consignes. Le manque de modélisation avant codage a causé des erreurs.
+                </p>
+            </div>
 
-<div class="ac-list">
+            <div class="gibbs-step">
+                <div class="gibbs-label"><span class="step-num">5</span> Conclusion</div>
+                <p>
+                    Je suis capable de développer des outils fonctionnels et d’exploiter des données réseau.
+                    La structuration en amont est essentielle pour améliorer la qualité du code.
+                </p>
+            </div>
 
-<div class="skill-explain">
-Analyse des signaux, compréhension des mécanismes de transmission et étude des supports de communication.
-</div>
+            <div class="gibbs-step">
+                <div class="gibbs-label"><span class="step-num">6</span> Plan d’action</div>
+                <p>
+                    Mieux structurer mes programmes, renforcer SQL (jointures, sous-requêtes),
+                    approfondir Docker et automatiser davantage mes scripts.
+                </p>
+            </div>
 
-<div class="gibbs">
+        </div>
 
-<div>
-<strong>EXPÉRIENCE</strong>
-Analyse et observation de signaux réseau (Wi-Fi et cuivre) afin de comprendre les phénomènes de transmission et d’atténuation.
-</div>
+        <!-- ═════ AC (SANS AC13.05) ═════ -->
+        <div class="ac-section-title">Apprentissages critiques</div>
 
-<div>
-<strong>SENTIMENTS</strong>
-Approche initialement complexe en raison de la nature abstraite des signaux, puis amélioration progressive grâce aux travaux pratiques.
-</div>
+        <div class="ac-list">
 
-<div>
-<strong>ÉVALUATION</strong>
-Résultats globalement satisfaisants, bien que certaines notions restent fragiles, notamment sur l’interprétation des mesures.
-</div>
+            <div class="ac-item">
+                <input type="checkbox" id="rt3_ac1" class="ac-toggle">
 
-<div>
-<strong>ANALYSE</strong>
-Les difficultés sont liées à un manque d’entraînement sur les outils de mesure et une compréhension encore partielle des modèles physiques.
-</div>
+                <label for="rt3_ac1" class="ac-label-row">
+                    <div>
+                        <div class="ac-label-name">AC13.01</div>
+                        <div class="ac-label-desc">Utiliser un système informatique et ses outils</div>
+                    </div>
+                    <i class="bi bi-chevron-down ac-chevron"></i>
+                </label>
 
-<div>
-<strong>CONCLUSION</strong>
-La compréhension globale des systèmes de transmission est acquise mais doit être consolidée par davantage de pratique.
-</div>
+                <div class="sem-panel">
+                    <a href="{{ asset('Documents/R1.07.pdf') }}">
+                        <button class="sem-btn">S1 — R1.07</button>
+                    </a>
+                    <a href="{{ asset('Documents/R2.02.pdf') }}">
+                        <button class="sem-btn">S2 — R2.02</button>
+                    </a>
+                </div>
+            </div>
 
-<div>
-<strong>PLAN D’ACTION</strong>
-Revoir les bases théoriques, multiplier les exercices de manipulation de signaux et renforcer la compréhension des phénomènes physiques.
-</div>
+            <div class="ac-item">
+                <input type="checkbox" id="rt3_ac2" class="ac-toggle">
 
-</div>
+                <label for="rt3_ac2" class="ac-label-row">
+                    <div>
+                        <div class="ac-label-name">AC13.02</div>
+                        <div class="ac-label-desc">Lire, corriger et modifier un programme</div>
+                    </div>
+                    <i class="bi bi-chevron-down ac-chevron"></i>
+                </label>
 
-<div class="ac-item">
-<input type="checkbox" id="rt2_ac1" class="ac-toggle">
-<label for="rt2_ac1" class="ac-label">AC12.01</label>
-<div class="sem-panel">
-<a href="{{ asset('Documents/SAE1.03.pdf') }}"><button class="sem-btn">S1</button></a>
-<a href="{{ asset('Documents/SAE2.03.pdf') }}"><button class="sem-btn">S2</button></a>
-</div>
-</div>
+                <div class="sem-panel">
+                    <a href="{{ asset('Documents/R1.07.pdf') }}">
+                        <button class="sem-btn">S1 — R1.07</button>
+                    </a>
+                    <a href="{{ asset('Documents/SAE1.05.pdf') }}">
+                        <button class="sem-btn">S1 — SAE1.05</button>
+                    </a>
+                </div>
+            </div>
 
-<div class="ac-item">
-<input type="checkbox" id="rt2_ac2" class="ac-toggle">
-<label for="rt2_ac2" class="ac-label">AC12.03</label>
-<div class="sem-panel">
-<a href="{{ asset('Documents/R1.05.pdf') }}"><button class="sem-btn">S1</button></a>
-<a href="{{ asset('Documents/R2.01.pdf') }}"><button class="sem-btn">S2</button></a>
-</div>
-</div>
+            <div class="ac-item">
+                <input type="checkbox" id="rt3_ac3" class="ac-toggle">
 
-</div>
-</div>
+                <label for="rt3_ac3" class="ac-label-row">
+                    <div>
+                        <div class="ac-label-name">AC13.03</div>
+                        <div class="ac-label-desc">Concevoir un algorithme et le traduire en programme</div>
+                    </div>
+                    <i class="bi bi-chevron-down ac-chevron"></i>
+                </label>
 
-<!-- ================= RT3 ================= -->
-<div class="skill-card">
-<input type="checkbox" id="rt3" class="skill-toggle">
-<label for="rt3" class="skill-title">
-<h3>RT3</h3>
-<p>Créer des outils et des applications informatiques pour les R&T</p>
-</label>
+                <div class="sem-panel">
+                    <a href="{{ asset('Documents/SAE1.05.pdf') }}">
+                        <button class="sem-btn">S1 — SAE1.05</button>
+                    </a>
+                    <a href="{{ asset('Documents/R2.07.pdf') }}">
+                        <button class="sem-btn">S2 — R2.07</button>
+                    </a>
+                </div>
+            </div>
 
-<div class="ac-list">
+        </div>
 
-<div class="skill-explain">
-Conception, développement et structuration d’applications logicielles.
-</div>
-
-<div class="gibbs">
-
-<div>
-<strong>EXPÉRIENCE</strong>
-Réalisation de projets de développement en Python et web, incluant la création d’algorithmes et la structuration d’applications simples.
-</div>
-
-<div>
-<strong>SENTIMENTS</strong>
-Intérêt marqué pour la programmation malgré des difficultés initiales dans la logique algorithmique et l’organisation du code.
-</div>
-
-<div>
-<strong>ÉVALUATION</strong>
-Les programmes développés sont fonctionnels mais peuvent manquer d’optimisation et de structuration avancée.
-</div>
-
-<div>
-<strong>ANALYSE</strong>
-Les difficultés proviennent d’un manque de méthode de conception et d’une expérience encore limitée en développement structuré.
-</div>
-
-<div>
-<strong>CONCLUSION</strong>
-La compétence en développement est en progression constante et tend vers une autonomie progressive.
-</div>
-
-<div>
-<strong>PLAN D’ACTION</strong>
-Pratiquer régulièrement, améliorer la structuration du code et approfondir les bonnes pratiques de développement.
-</div>
-
-</div>
-
-<div class="ac-item">
-<input type="checkbox" id="rt3_ac1" class="ac-toggle">
-<label for="rt3_ac1" class="ac-label">AC13.01</label>
-<div class="sem-panel">
-<a href="{{ asset('Documents/R1.07.pdf') }}"><button class="sem-btn">S1</button></a>
-<a href="{{ asset('Documents/R2.02.pdf') }}"><button class="sem-btn">S2</button></a>
-</div>
+    </div>
 </div>
 
-<div class="ac-item">
-<input type="checkbox" id="rt3_ac2" class="ac-toggle">
-<label for="rt3_ac2" class="ac-label">AC13.03</label>
-<div class="sem-panel">
-<a href="{{ asset('Documents/SAE1.05.pdf') }}"><button class="sem-btn">S1</button></a>
-<a href="{{ asset('Documents/R2.07.pdf') }}"><button class="sem-btn">S2</button></a>
-</div>
-</div>
+    </div><!-- /skills-grid -->
+
+    <!-- ═══════════ AUTO-ÉVALUATION ═══════════ -->
+    <p class="section-heading">Auto-évaluation</p>
+
+    <div class="auto-eval">
+        <h2>Niveau d'acquisition par compétence</h2>
+        <div class="eval-grid">
+
+            <div class="eval-card">
+                <div class="comp-name">RT1</div>
+                <div class="comp-title">Administrer les réseaux et l'Internet</div>
+                <div class="stars">
+                    <div class="star on"></div>
+                    <div class="star on"></div>
+                    <div class="star on"></div>
+                    <div class="star on"></div>
+                </div>
+                <div class="eval-score">4<span>/4</span></div>
+                <div class="eval-note">Très bonne maîtrise — configurations réelles maîtrisées, diagnostic autonome</div>
+            </div>
+
+            <div class="eval-card">
+                <div class="comp-name">RT2</div>
+                <div class="comp-title">Connecter les entreprises et les usagers</div>
+                <div class="stars">
+                    <div class="star on"></div>
+                    <div class="star on"></div>
+                    <div class="star on"></div>
+                    <div class="star"></div>
+                </div>
+                <div class="eval-score">3<span>/4</span></div>
+                <div class="eval-note">Bonne maîtrise — interprétation des mesures à consolider</div>
+            </div>
+
+            <div class="eval-card">
+                <div class="comp-name">RT3</div>
+                <div class="comp-title">Créer des outils et applications</div>
+                <div class="stars">
+                    <div class="star on"></div>
+                    <div class="star on"></div>
+                    <div class="star on"></div>
+                    <div class="star"></div>
+                </div>
+                <div class="eval-score">3<span>/4</span></div>
+                <div class="eval-note">Bonne maîtrise — structuration du code à améliorer</div>
+            </div>
+
+        </div>
+    </div>
+
+<!-- ═══════════ EXPÉRIENCE ═══════════ -->
+<p class="section-heading" style="font-size:26px; font-weight:800; letter-spacing:1px;">
+    Expérience
+</p>
+
+<div class="exp-section">
+
+    <div class="exp-list">
+
+        <div class="exp-item">
+            <div class="exp-dot"><i class="bi bi-check-lg"></i></div>
+            <div class="exp-box">
+                <strong>Epsilon</strong>
+                <span>Chef de projet digital — 2022</span>
+            </div>
+        </div>
+
+        <div class="exp-item">
+            <div class="exp-dot"><i class="bi bi-check-lg"></i></div>
+            <div class="exp-box">
+                <strong>Mairie de Bobigny</strong>
+                <span>Événementiel — 2023</span>
+            </div>
+        </div>
+
+        <div class="exp-item">
+            <div class="exp-dot"><i class="bi bi-check-lg"></i></div>
+            <div class="exp-box">
+                <strong>Orange</strong>
+                <span>Alternance — Back Office Accès</span>
+            </div>
+        </div>
+
+        <!-- AJOUTS VILLEURBANNE -->
+
+        <div class="exp-item">
+            <div class="exp-dot"><i class="bi bi-check-lg"></i></div>
+            <div class="exp-box">
+                <strong>Villeurbanne</strong>
+                <span>Agent de nettoyage — Été 2025</span>
+            </div>
+        </div>
+
+        <div class="exp-item">
+            <div class="exp-dot"><i class="bi bi-check-lg"></i></div>
+            <div class="exp-box">
+                <strong>Villeurbanne</strong>
+                <span>Événementiel — Été 2025</span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="cv-preview">
+        <img src="{{ asset('images/CV_Alya.png') }}" alt="CV — ODDOZ Alya">
+    </div>
 
 </div>
-</div>
 
-</div>
-
-<!-- ================= EXPERIENCE ================= -->
-<h1 class="section-title">EXPÉRIENCE</h1>
-<div class="nice-bar"></div>
-
-<div class="experience-container">
-<div>
-<div class="exp-item"><div class="exp-check"><i class="bi bi-check-lg"></i></div><div class="exp-box">Epsilon — Chef de projet digital (2022)</div></div>
-<div class="exp-item"><div class="exp-check"><i class="bi bi-check-lg"></i></div><div class="exp-box">Mairie de Bobigny — Événementiel (2023)</div></div>
-<div class="exp-item"><div class="exp-check"><i class="bi bi-check-lg"></i></div><div class="exp-box">Orange — Alternance Back Office Accès</div></div>
-</div>
-
-<div class="cv">
-<img src="{{ asset('images/cv.jpg') }}" alt="CV">
-</div>
-</div>
+</div><!-- /wrapper -->
 
 {% endblock %}
