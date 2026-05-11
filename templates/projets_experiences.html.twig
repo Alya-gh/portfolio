@@ -21,11 +21,16 @@
 /* =====================
    GLOBAL
 ===================== */
-body{
+.wrapper{
     background:var(--bg);
     color:var(--text);
     font-family:'DM Sans', Arial, sans-serif;
-    line-height:1.6;
+    line-height:1.7;
+}
+
+p{
+    margin-bottom:12px;
+    color:#ddd;
 }
 
 /* =====================
@@ -33,37 +38,36 @@ body{
 ===================== */
 .section-heading{
     text-align:center;
-    margin:80px 0 35px 0;
-    font-size:20px;
-    font-weight:800;
-    letter-spacing:2px;
-    color:var(--text);
-    position:relative;
+    margin:90px 0 40px;
+    font-size:28px;
+    font-weight:900;
+    letter-spacing:1px;
 }
 
 .section-heading::after{
     content:"";
     display:block;
-    width:70px;
-    height:3px;
+    width:80px;
+    height:4px;
     background:var(--violet);
-    margin:10px auto 0;
+    margin:12px auto 0;
     border-radius:10px;
 }
 
 /* =====================
-   SKILLS GRID
+   SKILLS GRID → COLONNE 🔥
 ===================== */
 .skills-grid{
     display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:40px;
+    flex-direction:column; /* 🔥 clé */
+    align-items:center;
+    gap:30px;
 }
 
 /* CARD */
 .skill-card{
-    width:360px;
+    width:100%;
+    max-width:850px; /* 🔥 plus large et propre */
     background:var(--card);
     border:1px solid var(--border);
     border-radius:18px;
@@ -74,6 +78,7 @@ body{
 .skill-card:hover{
     transform:translateY(-6px);
     border-color:var(--violet);
+    box-shadow:0 0 20px rgba(213,155,246,0.15);
 }
 
 /* toggle */
@@ -110,6 +115,53 @@ body{
     display:block;
 }
 
+.skill-body > *{
+    margin-bottom:18px;
+}
+
+/* =====================
+   SLIDER 🔥
+===================== */
+.slider{
+    position:relative;
+    width:100%;
+    margin:20px 0;
+}
+
+.slider img{
+    width:100%;
+    border-radius:12px;
+    border:1px solid var(--border);
+    display:none;
+}
+
+.slider img.active{
+    display:block;
+}
+
+/* boutons */
+.slider-btn{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    background:rgba(0,0,0,0.6);
+    border:none;
+    color:white;
+    font-size:18px;
+    padding:8px 12px;
+    cursor:pointer;
+    border-radius:8px;
+    transition:0.2s;
+}
+
+.slider-btn:hover{
+    background:var(--violet);
+    color:black;
+}
+
+.prev{ left:10px; }
+.next{ right:10px; }
+
 /* =====================
    PROOF BLOCK
 ===================== */
@@ -118,10 +170,20 @@ body{
     border-left:3px solid var(--violet);
     padding:15px;
     border-radius:12px;
-    margin-bottom:15px;
+}
+
+.proof-title{
+    font-weight:700;
+    margin-bottom:10px;
+    display:flex;
+    align-items:center;
+    gap:8px;
 }
 
 .proof-row{
+    display:flex;
+    flex-direction:column;
+    gap:3px;
     margin-bottom:10px;
 }
 
@@ -130,6 +192,10 @@ body{
     font-size:11px;
     text-transform:uppercase;
     letter-spacing:1px;
+}
+
+.proof-val{
+    color:#ddd;
 }
 
 /* =====================
@@ -143,9 +209,14 @@ body{
 
 .gibbs-step{
     background:var(--card2);
-    border-left:2px solid var(--violet);
+    border-left:3px solid var(--violet);
     padding:14px;
-    border-radius:12px;
+    border-radius:10px;
+    transition:0.2s;
+}
+
+.gibbs-step:hover{
+    transform:translateX(4px);
 }
 
 .gibbs-label{
@@ -155,9 +226,19 @@ body{
     margin-bottom:6px;
 }
 
+.gibbs-step p{
+    font-size:14px;
+    color:#ccc;
+}
+
 /* =====================
    AC
 ===================== */
+.ac-section-title{
+    font-weight:700;
+    margin-bottom:10px;
+}
+
 .ac-item{
     background:var(--card2);
     border:1px solid var(--border);
@@ -202,7 +283,7 @@ body{
 }
 
 /* =====================
-   AUTO EVALUATION (CLEAN CARDS)
+   AUTO EVAL
 ===================== */
 .auto-eval{
     margin:70px auto;
@@ -266,16 +347,8 @@ body{
 }
 
 /* =====================
-   EXPERIENCE (FIX PREMIUM)
+   EXPERIENCE
 ===================== */
-.exp-title{
-    text-align:center;
-    font-size:26px;
-    font-weight:900;
-    color:var(--violet);
-    margin:80px 0 40px;
-}
-
 .exp-section{
     display:flex;
     justify-content:center;
@@ -284,7 +357,6 @@ body{
     align-items:flex-start;
 }
 
-/* LIST */
 .exp-list{
     display:flex;
     flex-direction:column;
@@ -305,16 +377,20 @@ body{
     display:flex;
     align-items:center;
     justify-content:center;
-    flex-shrink:0;
 }
 
-/* BOX */
 .exp-box{
     background:var(--card);
     border:1px solid var(--border);
     padding:15px;
     border-radius:12px;
     width:280px;
+    transition:0.3s;
+}
+
+.exp-box:hover{
+    transform:translateY(-3px);
+    border-color:var(--violet);
 }
 
 /* CV */
@@ -328,11 +404,6 @@ body{
    RESPONSIVE
 ===================== */
 @media (max-width:768px){
-    .skills-grid{
-        flex-direction:column;
-        align-items:center;
-    }
-
     .exp-section{
         flex-direction:column;
         align-items:center;
@@ -394,6 +465,16 @@ body{
                         <span class="proof-val">Mise en place d'un réseau local fonctionnel avec services DNS et Samba. Réseau opérationnel à l'issue du TP ; plusieurs erreurs de configuration corrigées de manière autonome.</span>
                     </div>
                 </div>
+
+<!-- IMAGES -->
+<div class="slider" id="slider-rt1">
+    <button class="slider-btn prev"><i class="bi bi-chevron-left"></i></button>
+
+    <img src="{{ asset('images/SAE1.02.png') }}" class="active">
+    <img src="{{ asset('images/SAE2.01.png') }}">
+
+    <button class="slider-btn next"><i class="bi bi-chevron-right"></i></button>
+</div>
 
                 <!-- GIBBS -->
                 <div class="gibbs-grid">
@@ -498,6 +579,16 @@ body{
                         <span class="proof-val">Audit Wi-Fi complet avec identification de zones à améliorer, détection d'une prise défectueuse (C3) par tests CableIQ, production d'un devis technique argumenté. Niveau d'acquisition estimé à 3/4.</span>
                     </div>
                 </div>
+
+<!-- IMAGES -->
+<div class="slider" id="slider-rt2">
+    <button class="slider-btn prev"><i class="bi bi-chevron-left"></i></button>
+
+    <img src="{{ asset('images/SAE1.03-1.png') }}" class="active">
+    <img src="{{ asset('images/SAE1.03-2.png') }}">
+
+    <button class="slider-btn next"><i class="bi bi-chevron-right"></i></button>
+</div>
 
                 <div class="gibbs-grid">
                     <div class="gibbs-step full">
@@ -636,6 +727,16 @@ body{
                 </span>
             </div>
         </div>
+
+<!-- IMAGES -->
+<div class="slider" id="slider-rt3">
+    <button class="slider-btn prev"><i class="bi bi-chevron-left"></i></button>
+
+    <img src="{{ asset('images/py.png') }}" class="active">
+    <img src="{{ asset('images/c.png') }}">
+
+    <button class="slider-btn next"><i class="bi bi-chevron-right"></i></button>
+</div>
 
         <!-- ═════ GIBBS ═════ -->
         <div class="gibbs-grid">
@@ -826,11 +927,28 @@ body{
 
     <div class="exp-list">
 
+        <!-- 🔥 PLUS RÉCENT -->
         <div class="exp-item">
             <div class="exp-dot"><i class="bi bi-check-lg"></i></div>
             <div class="exp-box">
-                <strong>Epsilon</strong>
-                <span>Chef de projet digital — 2022</span>
+                <strong>Orange</strong>
+                <span>Alternance — Back Office Accès (2026 - 2028)</span>
+            </div>
+        </div>
+
+        <div class="exp-item">
+            <div class="exp-dot"><i class="bi bi-check-lg"></i></div>
+            <div class="exp-box">
+                <strong>Villeurbanne</strong>
+                <span>Événementiel — Été 2025</span>
+            </div>
+        </div>
+
+        <div class="exp-item">
+            <div class="exp-dot"><i class="bi bi-check-lg"></i></div>
+            <div class="exp-box">
+                <strong>Villeurbanne</strong>
+                <span>Agent de nettoyage — Été 2025</span>
             </div>
         </div>
 
@@ -845,26 +963,8 @@ body{
         <div class="exp-item">
             <div class="exp-dot"><i class="bi bi-check-lg"></i></div>
             <div class="exp-box">
-                <strong>Orange</strong>
-                <span>Alternance — Back Office Accès</span>
-            </div>
-        </div>
-
-        <!-- AJOUTS VILLEURBANNE -->
-
-        <div class="exp-item">
-            <div class="exp-dot"><i class="bi bi-check-lg"></i></div>
-            <div class="exp-box">
-                <strong>Villeurbanne</strong>
-                <span>Agent de nettoyage — Été 2025</span>
-            </div>
-        </div>
-
-        <div class="exp-item">
-            <div class="exp-dot"><i class="bi bi-check-lg"></i></div>
-            <div class="exp-box">
-                <strong>Villeurbanne</strong>
-                <span>Événementiel — Été 2025</span>
+                <strong>Epsilon</strong>
+                <span>Chef de projet digital — 2022</span>
             </div>
         </div>
 
@@ -876,6 +976,33 @@ body{
 
 </div>
 
-</div><!-- /wrapper -->
+<script>
+function initSlider(id){
+    let index = 0;
+    const slider = document.getElementById(id);
+    const images = slider.querySelectorAll("img");
+
+    function show(i){
+        images.forEach(img => img.classList.remove("active"));
+        images[i].classList.add("active");
+    }
+
+    slider.querySelector(".next").onclick = () => {
+        index = (index + 1) % images.length;
+        show(index);
+    };
+
+    slider.querySelector(".prev").onclick = () => {
+        index = (index - 1 + images.length) % images.length;
+        show(index);
+    };
+
+    show(index);
+}
+
+initSlider("slider-rt1");
+initSlider("slider-rt2");
+initSlider("slider-rt3");
+</script>
 
 {% endblock %}
